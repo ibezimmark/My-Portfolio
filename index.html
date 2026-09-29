@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chinedum Mark Ndubueze | Full Stack Web Developer & Artisan Footwear Designer</title>
+  
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  
-  <!-- Tailwind CSS CDN with custom config -->
+ 
+  <!-- Tailwind CSS CDN with complete config -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -21,6 +22,11 @@
             display: ['"Space Grotesk"', 'sans-serif']
           },
           colors: {
+            brand: {
+              canvasDark: '#090a0f',
+              cardDark: '#11141d',
+              borderDark: '#1e2433'
+            },
             gold: {
               300: '#fde68a',
               400: '#fbbf24',
@@ -55,28 +61,12 @@
     ::-webkit-scrollbar-thumb:hover {
       background: #f59e0b;
     }
-
-    /* Glassmorphism helpers */
-    .glass-card-dark {
-      background: rgba(15, 23, 42, 0.72);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .glass-card-light {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-    }
   </style>
 </head>
 
-
-
 <body class="bg-slate-950 text-slate-100 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-500 font-sans selection:bg-amber-500 selection:text-slate-950 relative overflow-x-hidden min-h-screen">
 
-  <!-- Interactive Background Canvas (Constellation Particle System) -->
+  <!-- Interactive Background Canvas -->
   <canvas id="starfield" class="fixed inset-0 pointer-events-none z-0 transition-opacity duration-700 opacity-60"></canvas>
 
   <!-- Scroll Progress Indicator -->
@@ -91,15 +81,14 @@
   <!-- Top Navigation Header -->
   <header id="navbar" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-xl">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      
+ 
       <!-- Brand Signature -->
       <a href="#hero" class="flex items-center gap-3 group">
         <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 via-amber-500 to-yellow-600 text-slate-950 flex items-center justify-center font-black text-lg shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform duration-300">
-          <>
+          NM
         </div>
         <div>
           <span class="font-display font-extrabold text-xl tracking-wider block leading-none">NEDUM.</span>
-          
         </div>
       </a>
 
@@ -114,32 +103,29 @@
         <a href="#contact" class="nav-link px-3.5 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-amber-400 transition-colors">Contact</a>
       </nav>
 
-     
-
       <!-- Action Utilities: Theme, GitHub, LinkedIn, Contact CTA -->
       <div class="flex items-center gap-2">
-        <!-- Theme Toggle Button -->
         <button id="themeToggleBtn" aria-label="Toggle Dark and Light Mode" class="p-2.5 rounded-xl border border-slate-700/80 bg-slate-900/90 text-amber-400 hover:border-amber-400/50 hover:bg-slate-800 transition-all flex items-center justify-center shadow-inner">
           <i id="themeIcon" data-lucide="sun" class="w-4 h-4"></i>
         </button>
 
-        <!-- GitHub Icon Link -->
         <a href="https://github.com/ibezimmark" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" title="GitHub: ibezimmark" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900/80 text-slate-300 hover:text-amber-400 hover:border-amber-500/40 hover:bg-slate-800 transition-all flex items-center justify-center">
-          <i data-lucide="github" class="w-4 h-4"></i>
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+          </svg>
         </a>
 
-        <!-- LinkedIn Icon Link -->
         <a href="https://www.linkedin.com/in/chinedum-ndubueze-a7744b362" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" title="LinkedIn Profile" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900/80 text-slate-300 hover:text-amber-400 hover:border-amber-500/40 hover:bg-slate-800 transition-all flex items-center justify-center">
-          <i data-lucide="linkedin" class="w-4 h-4"></i>
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+          </svg>
         </a>
 
-        <!-- Primary Contact CTA -->
-        <a href="https://wa.me/2348164394788" class="hidden md:inline-flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-slate-950 shadow-md shadow-amber-500/20 hover:scale-105 active:scale-95 animate-bounce transition-all">
+        <a href="https://markzu-linktree.netlify.app" class="hidden md:inline-flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-slate-950 shadow-md shadow-amber-500/20 hover:scale-105 active:scale-95 transition-all">
           <span>Let's Talk</span>
           <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
         </a>
 
-        <!-- Mobile Menu Hamburger Button -->
         <button id="mobileMenuBtn" aria-label="Open Navigation Menu" class="lg:hidden p-2 rounded-xl border border-slate-800 text-slate-300 hover:text-white">
           <i id="mobileMenuIcon" data-lucide="menu" class="w-6 h-6"></i>
         </button>
@@ -155,66 +141,49 @@
       <a href="#projects" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-slate-300 hover:bg-amber-500/20 hover:text-amber-400">Projects</a>
       <a href="#timeline" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-slate-300 hover:bg-amber-500/20 hover:text-amber-400">Experience</a>
       <a href="#contact" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-slate-300 hover:bg-amber-500/20 hover:text-amber-400">Contact</a>
-      
-      <!-- Mobile Social Shortcuts -->
+ 
       <div class="pt-3 border-t border-slate-800/80 flex items-center justify-around">
         <a href="https://github.com/ibezimmark" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-amber-400 border border-slate-800 bg-slate-900/60">
-          <i data-lucide="github" class="w-4 h-4"></i>
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
           <span>GitHub</span>
         </a>
         <a href="https://www.linkedin.com/in/chinedum-ndubueze-a7744b362" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-amber-400 border border-slate-800 bg-slate-900/60">
-          <i data-lucide="linkedin" class="w-4 h-4"></i>
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
           <span>LinkedIn</span>
         </a>
       </div>
     </div>
   </header>
 
- 
-
   <main class="relative z-10">
     <section id="hero" class="min-h-screen pt-32 pb-20 flex items-center justify-center relative overflow-hidden">
-
-        
       <!-- Glow ambient backdrops -->
       <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] rounded-full blur-[140px] pointer-events-none bg-amber-500/10 dark:bg-amber-500/10"></div>
       <div class="absolute bottom-1/4 right-1/4 w-[380px] h-[380px] rounded-full blur-[120px] pointer-events-none bg-yellow-500/10 dark:bg-yellow-600/10"></div>
 
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        
-   <marquee class="relative z-40 w-full  border-brand-gold/20 bg-brand-canvasDark/90 dark:bg-brand-canvasDark/95 text-[15px] font-mono tracking-widest text-slate-300 dark:text-slate-300 py-2.5 backdrop-blur-md transition-colors">
-  
-  <!-- Edge Gradient Vignette -->
-  <div class="marquee-mask w-full  flex select-none">
-    
-    <!-- Primary Content Stream (Duplicate 1) -->
-    <div class="animate-marquee flex items-center font-semibold gap-8 shrink-0">
-      
-      <span class="flex items-center gap-2">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-        <span class="text-brand-gold font-bold">STATUS:</span> OPEN FOR JOB COLLABORATIONS &amp; ROLES
-      </span>
-      <span class="text-brand-gold/40">✦</span>
-
-      <span class="flex items-center gap-2">
-        <span class="text-brand-gold font-bold">FULLSTACK:</span> REACT • NODE.JS • JAVASCRIPT • MONGODB • TAILWINDCSS
-      </span>
-      <span class="text-brand-gold/40">✦</span>
-
-      <span class="flex items-center gap-2">
-        <span class="text-brand-gold font-bold">ATELIER:</span> BESPOKE HAND-WELTED FOOTWEAR • MARKZUFOOTWEARS
-      </span>
-      <span class="text-brand-gold/40">✦</span>
-
-      <span class="flex items-center gap-2">
-        <span class="text-brand-gold font-bold">LOCATION:</span> UMUAHIA, ABIA STATE, NIGERIA
-      </span>
-      <span class="text-brand-gold/40">✦</span>
-    </div>
-
-  </div>
-</div>
-</marquee>
+ 
+        <!-- Marquee Strip -->
+        <marquee class="relative z-40 w-full border-y border-amber-500/20 bg-slate-900/90 text-sm font-mono tracking-widest text-slate-300 py-2.5 backdrop-blur-md mb-8">
+          <div class="flex items-center font-semibold gap-8">
+            <span class="inline-flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              <span class="text-amber-400 font-bold">STATUS:</span> OPEN FOR JOB COLLABORATIONS &amp; ROLES
+            </span>
+            <span class="text-amber-500/40">✦</span>
+            <span class="inline-flex items-center gap-2">
+              <span class="text-amber-400 font-bold">FULLSTACK:</span> REACT • NODE.JS • JAVASCRIPT • MONGODB • TAILWINDCSS
+            </span>
+            <span class="text-amber-500/40">✦</span>
+            <span class="inline-flex items-center gap-2">
+              <span class="text-amber-400 font-bold">ATELIER:</span> BESPOKE HAND-WELTED FOOTWEAR • MARKZUFOOTWEARS
+            </span>
+            <span class="text-amber-500/40">✦</span>
+            <span class="inline-flex items-center gap-2">
+              <span class="text-amber-400 font-bold">LOCATION:</span> UMUAHIA, ABIA STATE, NIGERIA
+            </span>
+          </div>
+        </marquee>
 
         <!-- Live Status Pill -->
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest border border-amber-500/30 bg-amber-500/10 text-amber-400 mb-6 backdrop-blur-md shadow-sm transition-transform hover:scale-105">
@@ -230,15 +199,14 @@
 
         <!-- Typewriter Subheadline -->
         <div class="h-16 flex items-center justify-center mt-3">
-          <p class="text-lg sm:text-2xl font-bold flex items-center flex-wrap justify-center text-slate-400 dark:text-slate-400">
-            
+          <p class="text-lg sm:text-2xl font-bold flex items-center flex-wrap justify-center text-slate-400">
             <span id="typewriterText" class="ml-2 font-black text-amber-400 underline decoration-amber-500/40 underline-offset-4"></span>
             <span class="inline-block w-0.5 h-6 sm:h-8 bg-amber-400 ml-1 animate-pulse"></span>
           </p>
         </div>
 
-        <p class="max-w-2xl mx-auto text-sm sm:text-base leading-relaxed mt-4 text-slate-400 dark:text-slate-400">
-          Architecting resilient full-stack MERN &amp; cloud systems, alongside handcrafting bespoke luxury leather footwear at <span class="font-semibold text-amber-400">MarkZu Footwears</span>. Based in Umuahia, Abia State, Nigeria.
+        <p class="max-w-2xl mx-auto text-sm sm:text-base leading-relaxed mt-4 text-slate-400">
+          Architecting resilient full-stack MERN &amp; cloud systems, alongside handcrafting bespoke luxury leather footwear at <span class="font-semibold text-amber-400">MarkZu Footwears</span>. Based in Umuahia, Abia State, Nigeria
         </p>
 
         <!-- Call to Action Buttons -->
@@ -253,39 +221,23 @@
           </a>
         </div>
 
-        <!-- Social Connectivity Icons -->
-        <div class="mt-12 py-8 flex items-center justify-center gap-4">
-          <button onclick="copyToClipboard('markzuibezim@gmail.com', 'Email copied to clipboard!')" title="Copy Email" class="p-3 rounded-xl border border-slate-800 bg-slate-900/80 text-slate-400 hover:text-amber-400 hover:border-amber-500/40 hover:-translate-y-1 transition-all">
-            <i data-lucide="mail" class="w-5 h-5"></i>
-          </button>
-          <button onclick="copyToClipboard('+234 816 439 4788', 'Phone number copied to clipboard!')" title="Copy Phone" class="p-3 rounded-xl border border-slate-800 bg-slate-900/80 text-slate-400 hover:text-amber-400 hover:border-amber-500/40 hover:-translate-y-1 transition-all">
-            <i data-lucide="phone" class="w-5 h-5"></i>
-          </button>
-          <a href="https://github.com/ibezimmark" target="_blank" rel="noopener noreferrer" title="GitHub: @ibezimmark" class="p-3 rounded-xl border border-slate-800 bg-slate-900/80 text-slate-400 hover:text-amber-400 hover:border-amber-500/40 hover:-translate-y-1 transition-all">
-            <i data-lucide="github" class="w-5 h-5"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/chinedum-ndubueze-a7744b362" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" class="p-3 rounded-xl border border-slate-800 bg-slate-900/80 text-slate-400 hover:text-amber-400 hover:border-amber-500/40 hover:-translate-y-1 transition-all">
-            <i data-lucide="linkedin" class="w-5 h-5"></i>
-          </a>
-        </div>
-
         <!-- Stats & Metrics Row -->
-        <div class="mt-1 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
           <div class="p-5 rounded-2xl border border-slate-800/80 bg-slate-900/60 backdrop-blur-md hover:border-amber-500/30 transition-all hover:scale-105">
-            <div class="text-2xl font-black bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">Codes</div>
-            <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Clean Codes</div>
+            <div class="text-xl font-black bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">Codes</div>
+            <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Clean Architecture</div>
           </div>
           <div class="p-5 rounded-2xl border border-slate-800/80 bg-slate-900/60 backdrop-blur-md hover:border-amber-500/30 transition-all hover:scale-105">
-            <div class="text-2xl font-black bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">Footwears</div>
-            <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Befitting Footwears</div>
+            <div class="text-xl font-black bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">Footwears</div>
+            <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Bespoke Atelier</div>
           </div>
           <div class="p-5 rounded-2xl border border-slate-800/80 bg-slate-900/60 backdrop-blur-md hover:border-amber-500/30 transition-all hover:scale-105">
-            <div class="text-2xl font-black bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">Freelancing</div>
-            <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Strict Job Execution</div>
+            <div class="text-xl font-black bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">Freelance</div>
+            <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Strict Execution</div>
           </div>
           <div class="p-5 rounded-2xl border border-slate-800/80 bg-slate-900/60 backdrop-blur-md hover:border-amber-500/30 transition-all hover:scale-105">
-            <div class="text-2xl font-black bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">Collaboration</div>
-            <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Always Available for Collabs</div>
+            <div class="text-xl font-black bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">Collaboration</div>
+            <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Open for Projects</div>
           </div>
         </div>
 
@@ -295,7 +247,6 @@
     <!-- Dual-Craft Switcher Section -->
     <section id="crafts" class="py-24 border-t border-slate-800/80 bg-slate-900/30 relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         <div class="text-center mb-14">
           <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 mb-2">
             <i data-lucide="compass" class="w-3.5 h-3.5"></i>
@@ -307,7 +258,6 @@
           </p>
         </div>
 
-        <!-- Craft Toggle Buttons -->
         <div class="flex justify-center mb-10">
           <div class="p-1.5 rounded-2xl border border-slate-800 bg-slate-900 inline-flex gap-2">
             <button id="craftTabWeb" onclick="switchCraft('web')" class="flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20">
@@ -321,18 +271,13 @@
           </div>
         </div>
 
-        <!-- Dynamic Craft Details Card -->
-        <div id="craftCard" class="max-w-4xl mx-auto rounded-3xl border border-slate-800 bg-slate-900/80 p-8 sm:p-10 shadow-2xl transition-all">
-          <!-- Filled dynamically by JavaScript -->
-        </div>
-
+        <div id="craftCard" class="max-w-4xl mx-auto rounded-3xl border border-slate-800 bg-slate-900/80 p-8 sm:p-10 shadow-2xl transition-all"></div>
       </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="py-24 relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         <div class="text-center mb-16">
           <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 mb-2">
             <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
@@ -342,13 +287,11 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          <!-- Image Portrait with Glow Border -->
           <div class="lg:col-span-5 flex justify-center">
             <div class="relative group">
               <div class="absolute -inset-1.5 bg-gradient-to-r from-amber-500 to-yellow-600 rounded-3xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
               <div class="relative w-72 sm:w-80 h-96 rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 shadow-2xl">
-                <img src="/src/Nedum.jpeg" alt="Chinedum Mark Ndubueze" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105">
+                <img src="/src/Nedum.jpeg" alt="Chinedum Mark Ndubueze" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80'">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent flex items-end p-6">
                   <div>
                     <h3 class="text-lg font-bold text-white">Chinedum Mark Ndubueze</h3>
@@ -362,7 +305,6 @@
             </div>
           </div>
 
-          <!-- Narrative Content -->
           <div class="lg:col-span-7 space-y-6">
             <h3 class="text-2xl font-black leading-snug">
               Harmonizing rigorous engineering discipline with bespoke tactile leathercraft.
@@ -374,7 +316,6 @@
               At <span class="font-semibold text-amber-400">MarkZu Footwears</span>, I led the full-stack e-commerce deployment: optimizing queries to drop page load times by 50%, engineering automated Stripe payment processing to reduce manual workflows by 70%, and achieving a 35% online revenue climb in six months.
             </p>
 
-            <!-- Quick Fact Badges -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
               <div class="p-3.5 rounded-xl border border-slate-800 bg-slate-900/60 text-xs flex items-center gap-3">
                 <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-base">
@@ -405,30 +346,21 @@
                 <i data-lucide="copy" class="w-4 h-4 text-amber-400"></i>
                 <span>Copy Email</span>
               </button>
-
-            <a href="resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-             download="resume.pdf"
-             class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-semibold transition-all duration-200 shadow-md shadow-amber-500/10">
-             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-            </svg>
-           <span>Download Resume</span>
-           </a>
-              
+              <a href="resume.pdf" target="_blank" rel="noopener noreferrer" download="resume.pdf" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold uppercase tracking-wider transition-all shadow-md shadow-amber-500/10">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                <span>Download Resume</span>
+              </a>
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
 
     <!-- Skills Matrix Section -->
     <section id="skills" class="py-24 border-t border-slate-800/80 bg-slate-900/20 relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         <div class="text-center mb-12">
           <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 mb-2">
             <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
@@ -440,23 +372,14 @@
           </p>
         </div>
 
-        <!-- Skills Filter Tabs -->
-        <div id="skillsTabs" class="flex flex-wrap justify-center gap-2 mb-10">
-          <!-- Populated by JavaScript -->
-        </div>
-
-        <!-- Skills Progress Grid -->
-        <div id="skillsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <!-- Populated by JavaScript -->
-        </div>
-
+        <div id="skillsTabs" class="flex flex-wrap justify-center gap-2 mb-10"></div>
+        <div id="skillsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"></div>
       </div>
     </section>
 
     <!-- Projects Section -->
     <section id="projects" class="py-24 relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         <div class="text-center mb-10">
           <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 mb-2">
             <i data-lucide="layers" class="w-3.5 h-3.5"></i>
@@ -468,23 +391,14 @@
           </p>
         </div>
 
-        <!-- Project Category Filters -->
-        <div id="projectFilters" class="flex items-center justify-center gap-2 mb-10 flex-wrap">
-          <!-- Populated by JavaScript -->
-        </div>
-
-        <!-- Projects Grid -->
-        <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Populated by JavaScript -->
-        </div>
-
+        <div id="projectFilters" class="flex items-center justify-center gap-2 mb-10 flex-wrap"></div>
+        <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
       </div>
     </section>
 
     <!-- Career & Education Timeline -->
     <section id="timeline" class="py-24 border-t border-slate-800/80 bg-slate-900/30 relative">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         <div class="text-center mb-16">
           <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 mb-2">
             <i data-lucide="briefcase" class="w-3.5 h-3.5"></i>
@@ -492,18 +406,13 @@
           </div>
           <h2 class="font-display text-3xl sm:text-4xl font-black tracking-tight">Experience &amp; Academic Journey</h2>
         </div>
-
-        <div id="timelineContainer" class="relative border-l-2 border-amber-500/40 ml-4 md:ml-36 space-y-12">
-          <!-- Populated by JavaScript -->
-        </div>
-
+        <div id="timelineContainer" class="relative border-l-2 border-amber-500/40 ml-4 md:ml-36 space-y-12"></div>
       </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="py-24 border-t border-slate-800/80 relative">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         <div class="text-center mb-14">
           <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 mb-2">
             <i data-lucide="send" class="w-3.5 h-3.5"></i>
@@ -516,20 +425,18 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          
           <!-- Direct Details Cards -->
           <div class="lg:col-span-5 space-y-6">
             <div class="p-6 rounded-2xl border border-slate-800 bg-slate-900/80 space-y-4">
               <h3 class="text-base font-bold mb-2">Direct Communications</h3>
 
-              <!-- Email Card -->
               <div class="flex items-center justify-between p-3 rounded-xl border border-dashed border-amber-500/30">
                 <div class="flex items-center gap-3">
                   <div class="w-9 h-9 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center">
                     <i data-lucide="mail" class="w-4 h-4"></i>
                   </div>
                   <div>
-                    <div class="text-[15px] text-slate-400 uppercase font-mono">Email Address</div>
+                    <div class="text-xs text-slate-400 uppercase font-mono">Email Address</div>
                     <div class="text-xs font-bold">markzuibezim@gmail.com</div>
                   </div>
                 </div>
@@ -538,14 +445,13 @@
                 </button>
               </div>
 
-              <!-- Phone Card -->
               <div class="flex items-center justify-between p-3 rounded-xl border border-dashed border-amber-500/30">
                 <div class="flex items-center gap-3">
                   <div class="w-9 h-9 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center">
                     <i data-lucide="phone" class="w-4 h-4"></i>
                   </div>
                   <div>
-                    <div class="text-[13px] text-slate-400 uppercase font-mono">Direct Line / WhatsApp[Swift Response]</div>
+                    <div class="text-xs text-slate-400 uppercase font-mono">Direct Line / WhatsApp</div>
                     <div class="text-xs font-bold">+234 816 439 4788</div>
                   </div>
                 </div>
@@ -554,13 +460,12 @@
                 </button>
               </div>
 
-              <!-- Location Card -->
               <div class="flex items-center gap-3 p-3">
                 <div class="w-9 h-9 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center">
                   <i data-lucide="map-pin" class="w-4 h-4"></i>
                 </div>
                 <div>
-                  <div class="text-[12px] text-slate-400 uppercase font-mono">Base of Operations</div>
+                  <div class="text-xs text-slate-400 uppercase font-mono">Base of Operations</div>
                   <div class="text-xs font-bold">Umuahia, Abia State, Nigeria (440221)</div>
                 </div>
               </div>
@@ -572,7 +477,7 @@
                 <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
                 <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
                 <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
-                <span class="text-[12px] text-slate-500 ml-2">bash - nedum-daemon</span>
+                <span class="text-xs text-slate-500 ml-2">bash - nedum-daemon</span>
               </div>
               <code>
                 $ nedum --status<br>
@@ -581,9 +486,9 @@
             </div>
           </div>
 
-          <!-- Interactive Contact Form -->
+          <!-- Single Working Contact Form (Formspree Integrated) -->
           <div class="lg:col-span-7">
-            <form id="contactForm" class="p-8 rounded-2xl border border-slate-800 bg-slate-900/80 space-y-4 shadow-xl">
+            <form id="contactForm" action="https://formspree.io/f/xnpnbypq" method="POST" class="p-8 rounded-2xl border border-slate-800 bg-slate-900/80 space-y-4 shadow-xl">
               <div id="formSuccessAlert" class="hidden p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center gap-3 text-xs">
                 <i data-lucide="check-circle" class="w-5 h-5 flex-shrink-0"></i>
                 <span>Your message was dispatched successfully! Chinedum will get back to you shortly.</span>
@@ -592,19 +497,19 @@
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Your Name</label>
-                  <input type="text" id="formName" placeholder="Alex Morgan" required class="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-950 text-white text-xs outline-none focus:ring-2 focus:ring-amber-500 transition-all">
+                  <input type="text" name="name" id="formName" placeholder="Your Name...." required class="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-950 text-white text-xs outline-none focus:ring-2 focus:ring-amber-500 transition-all">
                   <p id="errName" class="text-[10px] text-red-400 mt-1 hidden">Please provide your name.</p>
                 </div>
                 <div>
                   <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Email Address</label>
-                  <input type="email" id="formEmail" placeholder="alex@example.com" required class="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-950 text-white text-xs outline-none focus:ring-2 focus:ring-amber-500 transition-all">
+                  <input type="email" name="email" id="formEmail" placeholder="Your Email...." required class="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-950 text-white text-xs outline-none focus:ring-2 focus:ring-amber-500 transition-all">
                   <p id="errEmail" class="text-[10px] text-red-400 mt-1 hidden">Please enter a valid email.</p>
                 </div>
               </div>
 
               <div>
                 <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Engagement Category</label>
-                <select id="formCategory" class="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-950 text-white text-xs outline-none focus:ring-2 focus:ring-amber-500 transition-all">
+                <select name="category" id="formCategory" class="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-950 text-white text-xs outline-none focus:ring-2 focus:ring-amber-500 transition-all">
                   <option value="Full Stack Web Application">Full Stack Web Application (React / Node.js)</option>
                   <option value="Bespoke Footwear Commission">Bespoke Footwear Commission (MarkZu Atelier)</option>
                   <option value="Freelance Digital Architecture">Freelance Digital Architecture &amp; Consulting</option>
@@ -614,19 +519,20 @@
 
               <div>
                 <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Message / Specifications</label>
-                <textarea id="formMessage" rows="4" placeholder="Detail your project goals, timelines, or custom footwear measurements..." required class="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-950 text-white text-xs outline-none focus:ring-2 focus:ring-amber-500 transition-all"></textarea>
+                <textarea name="message" id="formMessage" rows="4" placeholder="Detail your project goals, timelines, or custom footwear measurements..." required class="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-950 text-white text-xs outline-none focus:ring-2 focus:ring-amber-500 transition-all"></textarea>
                 <p id="errMessage" class="text-[10px] text-red-400 mt-1 hidden">Message must be at least 12 characters.</p>
               </div>
-             <form action="https://formspree.io/f/xnpnbypq" method="POST">
-            <button type="submit" id="submitBtn" class="w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-slate-950 shadow-lg shadow-amber-500/20 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2">
-                <i data-lucide="send" class="w-4 h-4"></i>
+
+              <button type="submit" id="submitBtn" class="w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-slate-950 shadow-lg shadow-amber-500/20 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22,2 15,22 11,13 2,9 22,2"></polygon>
+                </svg>
                 <span id="submitBtnText">Submit</span>
               </button>
             </form>
           </div>
-
         </div>
-
       </div>
     </section>
   </main>
@@ -635,16 +541,16 @@
   <footer class="py-12 border-t border-slate-800 bg-slate-950 text-xs text-slate-400 relative z-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-2">
-        <span class="font-extrabold text-amber-400">NEDUM.</span>
+        <span class="font-extrabold animate-pulse text-amber-400">NEDUM.</span>
         <span>— Chinedum Mark Ndubueze • Full Stack Developer &amp; Artisan.</span>
       </div>
       <div class="flex items-center gap-5">
         <a href="https://github.com/ibezimmark" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors flex items-center gap-1.5" title="GitHub Profile">
-          <i data-lucide="github" class="w-3.5 h-3.5"></i>
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
           <span>GitHub</span>
         </a>
         <a href="https://linkedin.com/in/chinedum-mark" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors flex items-center gap-1.5" title="LinkedIn Profile">
-          <i data-lucide="linkedin" class="w-3.5 h-3.5"></i>
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
           <span>LinkedIn</span>
         </a>
         <a href="#hero" class="hover:text-amber-400 transition-colors font-semibold">Back to Apex</a>
@@ -668,12 +574,10 @@
         <div id="modalCategory" class="text-[10px] font-bold uppercase tracking-widest text-amber-400"></div>
         <h2 id="modalTitle" class="text-xl sm:text-2xl font-black"></h2>
         <p id="modalDescription" class="text-xs sm:text-sm leading-relaxed text-slate-300"></p>
-        
         <div>
           <h4 class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">Technical &amp; Material Specifications</h4>
           <div id="modalTags" class="flex flex-wrap gap-2"></div>
         </div>
-
         <div class="pt-4 flex items-center gap-3">
           <a href="#contact" onclick="closeProjectModal()" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold uppercase tracking-wider transition-all shadow-md">
             Discuss Specifications
@@ -751,22 +655,24 @@
       },
       projects: [
         {
-          id: "markzu-footwears official-storefront",
+          id: "markzu-footwears",
           title: "MarkZu Footwears Platform",
           category: "Web Development",
           description: "Full-stack webpage built with React, Node.js.",
           longDescription: "Architected and deployed the official MarkZu digital storefront. Optimized backend queries and responsive React UI to decrease initial page latency by ~50% and accelerate checkout conversion by ~20%. Integrated automated email notifications and order-status trackers, slating manual workload down by 70%.",
           image: "/src/markzu branded nylon.jpeg",
-          tags: ["React", "Node.js", "Express", "MongoDB", "Stripe API", "Tailwind CSS"],
+          link: "https://markzu-linktree.netlify.app",
+          tags: ["React", "Node.js", "Tailwind CSS"],
           metrics: "50% Speed Boost • 70% Less Manual Admin • +35% 6-Month Sales"
         },
         {
           id: "sizing-workflow",
-          title: "Custom Sizing & Order Intake Engine",
+          title: "UGC Videos, AI Training",
           category: "Freelance Solutions",
           description: "Automated client anatomical data collection workflow eliminating human sizing errors and delivery schedule misalignments.",
           longDescription: "Developed a purpose-built client intake wizard for bespoke footwear commissions. It validates instep, foot length, and width measurements against standardized charts, dynamically producing cut-sheets and reducing post-production return modifications to near zero.",
           image: "https://images.unsplash.com/photo-1449247709967-d4461a6a6103?auto=format&fit=crop&w=900&q=80",
+          link: "https://markzu-linktree.netlify.app",
           tags: ["JavaScript ES6", "React", "State Management", "Data Validation"],
           metrics: "Zero Sizing Errors • Automated Client Cut-sheets • 100% Record Integrity"
         },
@@ -777,6 +683,7 @@
           description: "Handcrafted collection of bespoke leather Oxfords, monk straps, and contemporary casual footwear built with artisan methods.",
           longDescription: "Designed, cut, lasted, and welted high-end formal footwear for executive clients across Nigeria. Combined heritage hand-stitching with custom orthopedic inner cushioning to create footwear that balances visual distinction with enduring durability.",
           image: "/src/markzu footwear.jpeg",
+          link: "https://markzu-linktree.netlify.app",
           tags: ["Hand Welted", "Genuine Leather", "Custom Lasting", "Bespoke Finishing"],
           metrics: "Over 150+ Bespoke Pairs Crafted • 100% Client Approval Rating"
         },
@@ -787,6 +694,7 @@
           description: "Lightweight, containerized internal dashboard for tracking raw material leather inventories, production pipeline stages, and supplier ledgers.",
           longDescription: "Constructed using Node.js, Express, and Docker. Implemented role-based access control, cryptographic verification for procurement receipts, and automated replenishment alerts for high-grade leather hides and soling materials.",
           image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
+          link: "https://markzu-linktree.netlify.app",
           tags: ["Node.js", "Docker", "REST API", "Database Audits"],
           metrics: "Live Supply Tracking • 100% Procurement Verification"
         }
@@ -869,12 +777,12 @@
       showToast(currentTheme === 'dark' ? 'Obsidian Dark theme activated' : 'Luxury Light theme activated');
     });
 
-    // Toast Utility (Replaces alert)
+    // Toast Utility
     function showToast(msg) {
       const toast = document.getElementById('toast');
       const toastMsg = document.getElementById('toastMsg');
       toastMsg.textContent = msg;
-      
+ 
       if (currentTheme === 'dark') {
         toast.className = 'fixed bottom-6 right-6 z-50 transform transition-all duration-300 pointer-events-auto flex items-center gap-3 px-5 py-3.5 rounded-2xl shadow-2xl border text-sm font-semibold bg-slate-900 border-amber-500/40 text-slate-100 translate-y-0 opacity-100';
       } else {
@@ -887,7 +795,7 @@
       }, 3500);
     }
 
-    // Clipboard copy with iframe fallback
+    // Clipboard copy
     function copyToClipboard(text, successMsg) {
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(() => {
@@ -1080,15 +988,14 @@
       const gridContainer = document.getElementById('skillsGrid');
       const isDark = currentTheme === 'dark';
 
-      // Render Tabs
       tabsContainer.innerHTML = Object.keys(PORTFOLIO_DATA.skillsByCategory).map(cat => {
         const active = cat === currentSkillCategory;
         return `
           <button onclick="selectSkillCategory('${cat}')" class="px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
-            active 
-              ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20 scale-105' 
-              : isDark 
-                ? 'bg-slate-900 text-slate-400 border border-slate-800 hover:bg-slate-800 hover:text-white' 
+            active
+              ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20 scale-105'
+              : isDark
+                ? 'bg-slate-900 text-slate-400 border border-slate-800 hover:bg-slate-800 hover:text-white'
                 : 'bg-white text-stone-600 border border-stone-200 hover:bg-stone-100 hover:text-stone-950'
           }">
             ${cat}
@@ -1096,7 +1003,6 @@
         `;
       }).join('');
 
-      // Render Skills Cards
       const skills = PORTFOLIO_DATA.skillsByCategory[currentSkillCategory];
       gridContainer.innerHTML = skills.map(skill => `
         <div class="p-5 rounded-2xl border transition-all hover:border-amber-500/40 ${
@@ -1129,7 +1035,6 @@
       const gridContainer = document.getElementById('projectsGrid');
       const isDark = currentTheme === 'dark';
 
-      // Filters
       filtersContainer.innerHTML = projectCategories.map(cat => {
         const active = cat === currentProjectCategory;
         return `
@@ -1145,15 +1050,14 @@
         `;
       }).join('');
 
-      // Items
-      const list = currentProjectCategory === 'All' 
-        ? PORTFOLIO_DATA.projects 
+      const list = currentProjectCategory === 'All'
+        ? PORTFOLIO_DATA.projects
         : PORTFOLIO_DATA.projects.filter(p => p.category === currentProjectCategory);
 
       gridContainer.innerHTML = list.map(project => `
         <div class="group rounded-2xl overflow-hidden border transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl flex flex-col ${
-          isDark 
-            ? 'bg-slate-900/80 border-slate-800 hover:border-amber-500/40' 
+          isDark
+            ? 'bg-slate-900/80 border-slate-800 hover:border-amber-500/40'
             : 'bg-white border-stone-200 hover:border-amber-400 hover:shadow-xl'
         }">
           <div class="relative h-48 overflow-hidden bg-slate-950">
@@ -1176,9 +1080,7 @@
               }">${project.metrics}</div>
               <div class="flex flex-wrap gap-1.5">
                 ${project.tags.map(t => `
-                  <span class="text-[10px] font-mono px-2 py-0.5 rounded ${
-                    isDark ? 'bg-slate-800 text-slate-300' : 'bg-stone-100 text-stone-700'
-                  }">${t}</span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded ${                     isDark ? 'bg-slate-800 text-slate-300' : 'bg-stone-100 text-stone-700'                   }">${t}</span>
                 `).join('')}
               </div>
               <div class="flex items-center justify-between text-xs font-bold pt-2">
@@ -1186,7 +1088,7 @@
                   <span>Inspect Specs</span>
                   <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
                 </button>
-                <a href="#contact" class="hover:underline ${isDark ? 'text-slate-400 hover:text-white' : 'text-stone-500 hover:text-stone-900'}">Inquire</a>
+                ${project.link ? `<a href="${project.link}" target="_blank" class="hover:underline text-amber-400">Visit</a>` : ''}
               </div>
             </div>
           </div>
@@ -1209,7 +1111,7 @@
       document.getElementById('modalCategory').textContent = p.category;
       document.getElementById('modalTitle').textContent = p.title;
       document.getElementById('modalDescription').textContent = p.longDescription;
-      
+
       const tagsContainer = document.getElementById('modalTags');
       tagsContainer.innerHTML = p.tags.map(t => `
         <span class="text-xs px-2.5 py-1 rounded-md font-mono bg-slate-800 text-amber-300">${t}</span>
@@ -1235,8 +1137,8 @@
       container.innerHTML = PORTFOLIO_DATA.timeline.map(item => `
         <div class="relative pl-6 md:pl-10 group">
           <div class="absolute -left-[17px] top-1 w-8 h-8 rounded-full border-2 flex items-center justify-center transition-transform group-hover:scale-110 shadow-lg ${
-            isDark 
-              ? 'bg-slate-900 border-amber-500 text-amber-400' 
+            isDark
+              ? 'bg-slate-900 border-amber-500 text-amber-400'
               : 'bg-white border-amber-600 text-amber-700'
           }">
             <i data-lucide="${item.type === 'work' ? 'briefcase' : 'graduation-cap'}" class="w-3.5 h-3.5"></i>
@@ -1245,8 +1147,8 @@
             ${item.period}
           </div>
           <div class="p-6 rounded-2xl border transition-all ${
-            isDark 
-              ? 'bg-slate-900/70 border-slate-800 hover:border-amber-500/30' 
+            isDark
+              ? 'bg-slate-900/70 border-slate-800 hover:border-amber-500/30'
               : 'bg-white border-stone-200 hover:border-amber-300 shadow-sm'
           }">
             <div class="flex flex-wrap items-center justify-between gap-2">
@@ -1304,18 +1206,17 @@
       });
     });
 
-    // Form Submission & Validation
+    // Form Submission & Formspree AJAX Handler
     const contactForm = document.getElementById('contactForm');
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
+ 
       const name = document.getElementById('formName').value.trim();
       const email = document.getElementById('formEmail').value.trim();
       const message = document.getElementById('formMessage').value.trim();
 
       let valid = true;
 
-      // Validation Checks
       if (!name) {
         document.getElementById('errName').classList.remove('hidden');
         valid = false;
@@ -1344,17 +1245,30 @@
       submitBtn.disabled = true;
       submitText.textContent = "Transmitting Payload...";
 
-      setTimeout(() => {
+      try {
+        const formData = new FormData(contactForm);
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          document.getElementById('formSuccessAlert').classList.remove('hidden');
+          contactForm.reset();
+          showToast("Message securely transmitted! Nedum will reply shortly.");
+          setTimeout(() => {
+            document.getElementById('formSuccessAlert').classList.add('hidden');
+          }, 6000);
+        } else {
+          showToast("Form delivery error. Please try WhatsApp directly.");
+        }
+      } catch (err) {
+        showToast("Network error. Please try WhatsApp directly.");
+      } finally {
         submitBtn.disabled = false;
-        submitText.textContent = "Transmit Message";
-        document.getElementById('formSuccessAlert').classList.remove('hidden');
-        contactForm.reset();
-        showToast("Message securely transmitted! Nedum will reply shortly.");
-        
-        setTimeout(() => {
-          document.getElementById('formSuccessAlert').classList.add('hidden');
-        }, 6000);
-      }, 1200);
+        submitText.textContent = "Submit";
+      }
     });
 
     // Initialization on DOM Load
@@ -1370,12 +1284,12 @@
     });
   </script>
 
-<script
-  src="https://www.chatbase.co/embed.min.js"
-  chatbotId="yL8bhE7HcoOwJBJ7kGdhu"
-  domain="www.chatbase.co"
-  defer>
-</script>
-
+  <!-- Chatbase Chatbot Embed Widget -->
+  <script
+    src="https://www.chatbase.co/embed.min.js"
+    chatbotId="yL8bhE7HcoOwJBJ7kGdhu"
+    domain="www.chatbase.co"
+    defer>
+  </script>
 </body>
 </html>
