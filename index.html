@@ -1,1295 +1,566 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chinedum Mark Ndubueze | Full Stack Web Developer & Artisan Footwear Designer</title>
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
- 
-  <!-- Tailwind CSS CDN with complete config -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            display: ['"Space Grotesk"', 'sans-serif']
-          },
-          colors: {
-            brand: {
-              canvasDark: '#090a0f',
-              cardDark: '#11141d',
-              borderDark: '#1e2433'
-            },
-            gold: {
-              300: '#fde68a',
-              400: '#fbbf24',
-              500: '#f59e0b',
-              600: '#d97706',
-              goldleaf: '#d4af37'
-            }
-          }
-        }
-      }
-    };
-  </script>
-
-  <!-- Lucide Icons CDN -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
-  <style>
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #020617;
-    }
-    html:not(.dark) ::-webkit-scrollbar-track {
-      background: #f5f5f4;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #d4af37;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #f59e0b;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Chinedum Mark Ndubueze: Full Stack Web Developer and bespoke footwear artisan based in Umuahia, Abia State, Nigeria.">
+<title>Chinedum Mark Ndubueze | Full Stack Web Developer & Artisan Footwear Designer</title>
+<script>
+  // Apply saved or system theme before first paint to avoid a flash
+  try {
+    var t = localStorage.getItem('theme');
+    var dark = t ? t === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.classList.toggle('dark', dark);
+  } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: { extend: {
+      fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], display: ['Manrope', 'system-ui', 'sans-serif'] },
+      colors: {
+        ink: { 950: '#070d1a', 900: '#0b1426', 800: '#101b32', 700: '#1a2742' },
+        paper: '#f4f6f9',
+        brand: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8',800:'#1e40af',900:'#1e3a8a' }
+      },
+      keyframes: { rise: { from: { opacity: 0, transform: 'translateY(10px)' }, to: { opacity: 1, transform: 'none' } }, pop: { from: { opacity: 0, transform: 'scale(.96)' }, to: { opacity: 1, transform: 'none' } } },
+      animation: { rise: 'rise .5s ease-out both', pop: 'pop .2s ease-out' }
+    } }
+  };
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style type="text/tailwindcss">
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-paper text-slate-700 dark:bg-ink-950 dark:text-slate-300 font-sans antialiased overflow-x-hidden selection:bg-brand-500 selection:text-white transition-colors duration-300; }
+  h1, h2, h3, h4 { @apply text-slate-900 dark:text-white; }
+  section[id] { @apply scroll-mt-16; }
+  :focus-visible { @apply outline outline-2 outline-offset-2 outline-brand-500; }
+}
+@layer components {
+  .wrap { @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .sec { @apply py-16 sm:py-24; }
+  .sec-alt { @apply bg-white dark:bg-ink-900 border-y border-slate-200 dark:border-slate-800/80; }
+  .eyebrow { @apply inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[.16em] text-brand-700 dark:text-brand-400 mb-3; }
+  .h2 { @apply font-display text-3xl sm:text-4xl font-bold tracking-tight; }
+  .lead { @apply mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl; }
+  .muted { @apply text-slate-600 dark:text-slate-400; }
+  .accent { @apply text-brand-700 dark:text-brand-400; }
+  .surface { @apply bg-white dark:bg-ink-800 border border-slate-200 dark:border-slate-700/60 rounded-2xl shadow-sm transition-all duration-300; }
+  .lift { @apply hover:-translate-y-1 hover:shadow-xl hover:border-brand-500/60 dark:hover:border-brand-400/50; }
+  .icon-box { @apply w-10 h-10 shrink-0 rounded-xl grid place-items-center bg-brand-100 text-brand-700 dark:bg-brand-400/10 dark:text-brand-400; }
+  .btn { @apply inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed; }
+  .btn-p { @apply bg-brand-600 text-white shadow-lg shadow-brand-600/25 hover:bg-brand-500 hover:shadow-brand-500/40; }
+  .btn-o { @apply bg-white text-slate-800 border border-slate-300 hover:border-brand-500 hover:text-brand-700 dark:bg-ink-800 dark:text-slate-200 dark:border-slate-700 dark:hover:border-brand-400 dark:hover:text-brand-400; }
+  .iconbtn { @apply w-10 h-10 grid place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 hover:text-brand-700 hover:border-brand-500 dark:border-slate-700 dark:bg-ink-800 dark:text-slate-300 dark:hover:text-brand-400 dark:hover:border-brand-400 transition; }
+  .nav-link { @apply px-3 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider text-slate-600 hover:text-brand-700 dark:text-slate-400 dark:hover:text-brand-400 transition-colors; }
+  .nav-link.active { @apply text-brand-700 dark:text-brand-400 bg-brand-100/70 dark:bg-brand-400/10; }
+  .chip { @apply px-4 py-2 rounded-full text-xs font-semibold border border-slate-300 bg-white text-slate-600 hover:border-brand-500 hover:text-brand-700 dark:border-slate-700 dark:bg-ink-800 dark:text-slate-400 dark:hover:border-brand-400 dark:hover:text-brand-400 transition; }
+  .chip.on { @apply bg-slate-900 border-slate-900 text-white hover:text-white dark:bg-brand-600 dark:border-brand-600 dark:text-white dark:hover:text-white; }
+  .tag { @apply text-[11px] font-mono px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300; }
+  .field { @apply w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm placeholder:text-slate-400 dark:border-slate-700 dark:bg-ink-900 dark:text-white dark:placeholder:text-slate-500 outline-none transition focus:border-brand-500 focus:ring-4 focus:ring-brand-500/15; }
+  .lbl { @apply block text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5; }
+  .err { @apply text-[11px] text-red-600 dark:text-red-400 mt-1 hidden; }
+}
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #eef1f5; }
+.dark ::-webkit-scrollbar-track { background: #070d1a; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+.dark ::-webkit-scrollbar-thumb { background: #334155; }
+::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+.grid-bg { background-image: linear-gradient(to right, rgb(148 163 184 / .14) 1px, transparent 1px), linear-gradient(to bottom, rgb(148 163 184 / .14) 1px, transparent 1px); background-size: 44px 44px; -webkit-mask-image: radial-gradient(ellipse at center, #000 25%, transparent 72%); mask-image: radial-gradient(ellipse at center, #000 25%, transparent 72%); }
+@media (prefers-reduced-motion: reduce) { * { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+</style>
 </head>
 
-<body class="bg-slate-950 text-slate-100 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-500 font-sans selection:bg-amber-500 selection:text-slate-950 relative overflow-x-hidden min-h-screen">
+<body>
+<div id="scrollProgress" class="fixed top-0 left-0 h-0.5 bg-gradient-to-r from-brand-500 to-sky-400 z-[60]" style="width:0"></div>
 
-  <!-- Interactive Background Canvas -->
-  <canvas id="starfield" class="fixed inset-0 pointer-events-none z-0 transition-opacity duration-700 opacity-60"></canvas>
+<div id="toast" role="status" class="fixed bottom-5 left-1/2 -translate-x-1/2 sm:left-auto sm:right-6 sm:translate-x-0 z-[70] translate-y-24 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-3 px-5 py-3 rounded-xl border-l-4 border-brand-500 bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-2xl text-sm font-semibold max-w-[92vw]">
+  <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400 dark:text-emerald-600 shrink-0"></i><span id="toastMsg"></span>
+</div>
 
-  <!-- Scroll Progress Indicator -->
-  <div id="scrollProgress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 z-50 transition-all duration-75" style="width: 0%;"></div>
-
-  <!-- Notification Toast Box -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 px-5 py-3.5 rounded-2xl shadow-2xl border text-sm font-semibold">
-    <i id="toastIcon" data-lucide="check-circle" class="w-5 h-5 text-emerald-400"></i>
-    <span id="toastMsg" class="tracking-wide">Action executed successfully.</span>
-  </div>
-
-  <!-- Top Navigation Header -->
-  <header id="navbar" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-xl">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
- 
-      <!-- Brand Signature -->
-      <a href="#hero" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 via-amber-500 to-yellow-600 text-slate-950 flex items-center justify-center font-black text-lg shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform duration-300">
-          NM
-        </div>
-        <div>
-          <span class="font-display font-extrabold text-xl tracking-wider block leading-none">NEDUM.</span>
-        </div>
-      </a>
-
-      <!-- Desktop Navigation Links -->
-      <nav class="hidden lg:flex items-center gap-1">
-        <a href="#hero" class="nav-link px-3.5 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-amber-400 transition-colors">Home</a>
-        <a href="#crafts" class="nav-link px-3.5 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-amber-400 transition-colors">Dual Craft</a>
-        <a href="#about" class="nav-link px-3.5 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-amber-400 transition-colors">About</a>
-        <a href="#skills" class="nav-link px-3.5 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-amber-400 transition-colors">Skills</a>
-        <a href="#projects" class="nav-link px-3.5 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-amber-400 transition-colors">Projects</a>
-        <a href="#timeline" class="nav-link px-3.5 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-amber-400 transition-colors">Experience</a>
-        <a href="#contact" class="nav-link px-3.5 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-amber-400 transition-colors">Contact</a>
-      </nav>
-
-      <!-- Action Utilities: Theme, GitHub, LinkedIn, Contact CTA -->
-      <div class="flex items-center gap-2">
-        <button id="themeToggleBtn" aria-label="Toggle Dark and Light Mode" class="p-2.5 rounded-xl border border-slate-700/80 bg-slate-900/90 text-amber-400 hover:border-amber-400/50 hover:bg-slate-800 transition-all flex items-center justify-center shadow-inner">
-          <i id="themeIcon" data-lucide="sun" class="w-4 h-4"></i>
-        </button>
-
-        <a href="https://github.com/ibezimmark" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" title="GitHub: ibezimmark" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900/80 text-slate-300 hover:text-amber-400 hover:border-amber-500/40 hover:bg-slate-800 transition-all flex items-center justify-center">
-          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-          </svg>
-        </a>
-
-        <a href="https://www.linkedin.com/in/chinedum-ndubueze-a7744b362" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" title="LinkedIn Profile" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900/80 text-slate-300 hover:text-amber-400 hover:border-amber-500/40 hover:bg-slate-800 transition-all flex items-center justify-center">
-          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
-          </svg>
-        </a>
-
-        <a href="https://markzu-linktree.netlify.app" class="hidden md:inline-flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-slate-950 shadow-md shadow-amber-500/20 hover:scale-105 active:scale-95 transition-all">
-          <span>Let's Talk</span>
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-        </a>
-
-        <button id="mobileMenuBtn" aria-label="Open Navigation Menu" class="lg:hidden p-2 rounded-xl border border-slate-800 text-slate-300 hover:text-white">
-          <i id="mobileMenuIcon" data-lucide="menu" class="w-6 h-6"></i>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Dropdown Menu -->
-    <div id="mobileMenu" class="hidden lg:hidden px-4 pt-3 pb-6 space-y-2 border-b border-slate-800 bg-slate-950/95 backdrop-blur-2xl">
-      <a href="#hero" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-slate-300 hover:bg-amber-500/20 hover:text-amber-400">Home</a>
-      <a href="#crafts" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-slate-300 hover:bg-amber-500/20 hover:text-amber-400">Dual Craft</a>
-      <a href="#about" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-slate-300 hover:bg-amber-500/20 hover:text-amber-400">About Nedum</a>
-      <a href="#skills" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-slate-300 hover:bg-amber-500/20 hover:text-amber-400">Skills</a>
-      <a href="#projects" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-slate-300 hover:bg-amber-500/20 hover:text-amber-400">Projects</a>
-      <a href="#timeline" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-slate-300 hover:bg-amber-500/20 hover:text-amber-400">Experience</a>
-      <a href="#contact" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-slate-300 hover:bg-amber-500/20 hover:text-amber-400">Contact</a>
- 
-      <div class="pt-3 border-t border-slate-800/80 flex items-center justify-around">
-        <a href="https://github.com/ibezimmark" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-amber-400 border border-slate-800 bg-slate-900/60">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-          <span>GitHub</span>
-        </a>
-        <a href="https://www.linkedin.com/in/chinedum-ndubueze-a7744b362" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-amber-400 border border-slate-800 bg-slate-900/60">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-          <span>LinkedIn</span>
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <main class="relative z-10">
-    <section id="hero" class="min-h-screen pt-32 pb-20 flex items-center justify-center relative overflow-hidden">
-      <!-- Glow ambient backdrops -->
-      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] rounded-full blur-[140px] pointer-events-none bg-amber-500/10 dark:bg-amber-500/10"></div>
-      <div class="absolute bottom-1/4 right-1/4 w-[380px] h-[380px] rounded-full blur-[120px] pointer-events-none bg-yellow-500/10 dark:bg-yellow-600/10"></div>
-
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
- 
-        <!-- Marquee Strip -->
-        <marquee class="relative z-40 w-full border-y border-amber-500/20 bg-slate-900/90 text-sm font-mono tracking-widest text-slate-300 py-2.5 backdrop-blur-md mb-8">
-          <div class="flex items-center font-semibold gap-8">
-            <span class="inline-flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-              <span class="text-amber-400 font-bold">STATUS:</span> OPEN FOR JOB COLLABORATIONS &amp; ROLES
-            </span>
-            <span class="text-amber-500/40">✦</span>
-            <span class="inline-flex items-center gap-2">
-              <span class="text-amber-400 font-bold">FULLSTACK:</span> REACT • NODE.JS • JAVASCRIPT • MONGODB • TAILWINDCSS
-            </span>
-            <span class="text-amber-500/40">✦</span>
-            <span class="inline-flex items-center gap-2">
-              <span class="text-amber-400 font-bold">ATELIER:</span> BESPOKE HAND-WELTED FOOTWEAR • MARKZUFOOTWEARS
-            </span>
-            <span class="text-amber-500/40">✦</span>
-            <span class="inline-flex items-center gap-2">
-              <span class="text-amber-400 font-bold">LOCATION:</span> UMUAHIA, ABIA STATE, NIGERIA
-            </span>
-          </div>
-        </marquee>
-
-        <!-- Live Status Pill -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest border border-amber-500/30 bg-amber-500/10 text-amber-400 mb-6 backdrop-blur-md shadow-sm transition-transform hover:scale-105">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-          <span class="w-2 h-2 rounded-full bg-emerald-400 -ml-4"></span>
-          <span>Available for Engineering Roles &amp; Bespoke Commissions</span>
-        </div>
-
-        <!-- Name Masthead -->
-        <h1 class="font-display text-4xl sm:text-6xl md:text-7xl font-black tracking-tight leading-tight">
-          Chinedum Mark <span class="bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 bg-clip-text text-transparent">Ndubueze</span>
-        </h1>
-
-        <!-- Typewriter Subheadline -->
-        <div class="h-16 flex items-center justify-center mt-3">
-          <p class="text-lg sm:text-2xl font-bold flex items-center flex-wrap justify-center text-slate-400">
-            <span id="typewriterText" class="ml-2 font-black text-amber-400 underline decoration-amber-500/40 underline-offset-4"></span>
-            <span class="inline-block w-0.5 h-6 sm:h-8 bg-amber-400 ml-1 animate-pulse"></span>
-          </p>
-        </div>
-
-        <p class="max-w-2xl mx-auto text-sm sm:text-base leading-relaxed mt-4 text-slate-400">
-          Architecting resilient full-stack MERN &amp; cloud systems, alongside handcrafting bespoke luxury leather footwear at <span class="font-semibold text-amber-400">MarkZu Footwears</span>. Based in Umuahia, Abia State, Nigeria
-        </p>
-
-        <!-- Call to Action Buttons -->
-        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <a href="#projects" class="px-7 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-slate-950 shadow-xl shadow-amber-500/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
-            <span>Explore Creations</span>
-            <i data-lucide="chevron-right" class="w-4 h-4"></i>
-          </a>
-          <a href="#crafts" class="px-7 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider border border-slate-800 bg-slate-900/80 text-slate-200 hover:border-amber-500/40 hover:bg-slate-800 hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
-            <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i>
-            <span>Discover Dual Craft</span>
-          </a>
-        </div>
-
-        <!-- Stats & Metrics Row -->
-        <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="p-5 rounded-2xl border border-slate-800/80 bg-slate-900/60 backdrop-blur-md hover:border-amber-500/30 transition-all hover:scale-105">
-            <div class="text-xl font-black bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">Codes</div>
-            <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Clean Architecture</div>
-          </div>
-          <div class="p-5 rounded-2xl border border-slate-800/80 bg-slate-900/60 backdrop-blur-md hover:border-amber-500/30 transition-all hover:scale-105">
-            <div class="text-xl font-black bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">Footwears</div>
-            <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Bespoke Atelier</div>
-          </div>
-          <div class="p-5 rounded-2xl border border-slate-800/80 bg-slate-900/60 backdrop-blur-md hover:border-amber-500/30 transition-all hover:scale-105">
-            <div class="text-xl font-black bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">Freelance</div>
-            <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Strict Execution</div>
-          </div>
-          <div class="p-5 rounded-2xl border border-slate-800/80 bg-slate-900/60 backdrop-blur-md hover:border-amber-500/30 transition-all hover:scale-105">
-            <div class="text-xl font-black bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">Collaboration</div>
-            <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Open for Projects</div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Dual-Craft Switcher Section -->
-    <section id="crafts" class="py-24 border-t border-slate-800/80 bg-slate-900/30 relative">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-14">
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 mb-2">
-            <i data-lucide="compass" class="w-3.5 h-3.5"></i>
-            <span>Synergy of Two Disciplines</span>
-          </div>
-          <h2 class="font-display text-3xl sm:text-4xl font-black tracking-tight">The Dual-Craft Paradigm</h2>
-          <p class="mt-2 text-sm max-w-xl mx-auto text-slate-400">
-            Harmonizing architectural digital engineering logic with traditional bespoke leathercraft.
-          </p>
-        </div>
-
-        <div class="flex justify-center mb-10">
-          <div class="p-1.5 rounded-2xl border border-slate-800 bg-slate-900 inline-flex gap-2">
-            <button id="craftTabWeb" onclick="switchCraft('web')" class="flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20">
-              <i data-lucide="code" class="w-4 h-4"></i>
-              <span>Software Architecture</span>
-            </button>
-            <button id="craftTabFootwear" onclick="switchCraft('footwear')" class="flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-slate-400 hover:text-white">
-              <i data-lucide="scissors" class="w-4 h-4"></i>
-              <span>MarkZu Footwear Atelier</span>
-            </button>
-          </div>
-        </div>
-
-        <div id="craftCard" class="max-w-4xl mx-auto rounded-3xl border border-slate-800 bg-slate-900/80 p-8 sm:p-10 shadow-2xl transition-all"></div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-24 relative">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 mb-2">
-            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-            <span>Bio &amp; Background</span>
-          </div>
-          <h2 class="font-display text-3xl sm:text-4xl font-black tracking-tight">About Chinedum Mark</h2>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div class="lg:col-span-5 flex justify-center">
-            <div class="relative group">
-              <div class="absolute -inset-1.5 bg-gradient-to-r from-amber-500 to-yellow-600 rounded-3xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
-              <div class="relative w-72 sm:w-80 h-96 rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 shadow-2xl">
-                <img src="/src/Nedum.jpeg" alt="Chinedum Mark Ndubueze" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80'">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent flex items-end p-6">
-                  <div>
-                    <h3 class="text-lg font-bold text-white">Chinedum Mark Ndubueze</h3>
-                    <p class="text-xs text-amber-400 flex items-center gap-1 mt-0.5 font-medium">
-                      <i data-lucide="map-pin" class="w-3 h-3"></i>
-                      <span>Umuahia, Abia State, Nigeria</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="lg:col-span-7 space-y-6">
-            <h3 class="text-2xl font-black leading-snug">
-              Harmonizing rigorous engineering discipline with bespoke tactile leathercraft.
-            </h3>
-            <p class="text-sm sm:text-base leading-relaxed text-slate-300">
-              Holding a Bachelor in Electrical and Electronics Engineering (B.Eng.) from <span class="font-semibold text-amber-400">Michael Okpara University of Agriculture Umudike</span>, I have cultivated a dual expertise: architecting resilient full-stack web systems and handcrafting luxury leather footwear. My journey bridges the digital and artisanal, merging precision engineering with the tactile artistry of bespoke shoemaking.
-            </p>
-            <p class="text-sm sm:text-base leading-relaxed text-slate-300">
-              At <span class="font-semibold text-amber-400">MarkZu Footwears</span>, I led the full-stack e-commerce deployment: optimizing queries to drop page load times by 50%, engineering automated Stripe payment processing to reduce manual workflows by 70%, and achieving a 35% online revenue climb in six months.
-            </p>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-              <div class="p-3.5 rounded-xl border border-slate-800 bg-slate-900/60 text-xs flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-base">
-                  🇳🇬
-                </div>
-                <div>
-                  <span class="text-slate-400 block font-mono text-[10px]">NATIONALITY</span>
-                  <span class="font-bold">Nigerian (Abia State)</span>
-                </div>
-              </div>
-
-              <div class="p-3.5 rounded-xl border border-slate-800 bg-slate-900/60 text-xs flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center">
-                  <i data-lucide="graduation-cap" class="w-4 h-4"></i>
-                </div>
-                <div>
-                  <span class="text-slate-400 block font-mono text-[10px]">EDUCATION</span>
-                  <span class="font-bold">MOUAU Engineering (B.Eng.)</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="pt-2 flex flex-wrap gap-4">
-              <a href="#contact" class="px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20 hover:bg-amber-400 transition-all hover:scale-105">
-                Commission a Project
-              </a>
-              <button onclick="copyToClipboard('markzuibezim@gmail.com', 'Email copied!')" class="px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider border border-slate-800 bg-slate-900 text-slate-300 hover:bg-slate-800 hover:scale-105 transition-all flex items-center gap-2">
-                <i data-lucide="copy" class="w-4 h-4 text-amber-400"></i>
-                <span>Copy Email</span>
-              </button>
-              <a href="resume.pdf" target="_blank" rel="noopener noreferrer" download="resume.pdf" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold uppercase tracking-wider transition-all shadow-md shadow-amber-500/10">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-                <span>Download Resume</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills Matrix Section -->
-    <section id="skills" class="py-24 border-t border-slate-800/80 bg-slate-900/20 relative">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 mb-2">
-            <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
-            <span>Technical &amp; Artisan Skills</span>
-          </div>
-          <h2 class="font-display text-3xl sm:text-4xl font-black tracking-tight">Toolkit &amp; Mastery</h2>
-          <p class="mt-2 text-sm max-w-xl mx-auto text-slate-400">
-            Full-stack frameworks, database systems, container pipelines, and custom leathercraft techniques.
-          </p>
-        </div>
-
-        <div id="skillsTabs" class="flex flex-wrap justify-center gap-2 mb-10"></div>
-        <div id="skillsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"></div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-24 relative">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-10">
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 mb-2">
-            <i data-lucide="layers" class="w-3.5 h-3.5"></i>
-            <span>Portfolio of Works</span>
-          </div>
-          <h2 class="font-display text-3xl sm:text-4xl font-black tracking-tight">Featured Creations &amp; Systems</h2>
-          <p class="mt-2 text-sm max-w-xl mx-auto text-slate-400">
-            Explore bespoke e-commerce platforms, anatomical intake logic, and handcrafted leather boots.
-          </p>
-        </div>
-
-        <div id="projectFilters" class="flex items-center justify-center gap-2 mb-10 flex-wrap"></div>
-        <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-      </div>
-    </section>
-
-    <!-- Career & Education Timeline -->
-    <section id="timeline" class="py-24 border-t border-slate-800/80 bg-slate-900/30 relative">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 mb-2">
-            <i data-lucide="briefcase" class="w-3.5 h-3.5"></i>
-            <span>Milestones</span>
-          </div>
-          <h2 class="font-display text-3xl sm:text-4xl font-black tracking-tight">Experience &amp; Academic Journey</h2>
-        </div>
-        <div id="timelineContainer" class="relative border-l-2 border-amber-500/40 ml-4 md:ml-36 space-y-12"></div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 border-t border-slate-800/80 relative">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-14">
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 mb-2">
-            <i data-lucide="send" class="w-3.5 h-3.5"></i>
-            <span>Get In Touch</span>
-          </div>
-          <h2 class="font-display text-3xl sm:text-4xl font-black tracking-tight">Initiate a Collaboration</h2>
-          <p class="mt-2 text-sm max-w-lg mx-auto text-slate-400">
-            Have a full-stack platform to engineer, a freelance mandate, or an artisan footwear commission? Send a message.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          <!-- Direct Details Cards -->
-          <div class="lg:col-span-5 space-y-6">
-            <div class="p-6 rounded-2xl border border-slate-800 bg-slate-900/80 space-y-4">
-              <h3 class="text-base font-bold mb-2">Direct Communications</h3>
-
-              <div class="flex items-center justify-between p-3 rounded-xl border border-dashed border-amber-500/30">
-                <div class="flex items-center gap-3">
-                  <div class="w-9 h-9 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center">
-                    <i data-lucide="mail" class="w-4 h-4"></i>
-                  </div>
-                  <div>
-                    <div class="text-xs text-slate-400 uppercase font-mono">Email Address</div>
-                    <div class="text-xs font-bold">markzuibezim@gmail.com</div>
-                  </div>
-                </div>
-                <button onclick="copyToClipboard('markzuibezim@gmail.com', 'Email copied!')" class="p-2 rounded-lg hover:bg-amber-500/10 text-amber-400 transition-colors" title="Copy Email">
-                  <i data-lucide="copy" class="w-4 h-4"></i>
-                </button>
-              </div>
-
-              <div class="flex items-center justify-between p-3 rounded-xl border border-dashed border-amber-500/30">
-                <div class="flex items-center gap-3">
-                  <div class="w-9 h-9 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center">
-                    <i data-lucide="phone" class="w-4 h-4"></i>
-                  </div>
-                  <div>
-                    <div class="text-xs text-slate-400 uppercase font-mono">Direct Line / WhatsApp</div>
-                    <div class="text-xs font-bold">+234 816 439 4788</div>
-                  </div>
-                </div>
-                <button onclick="copyToClipboard('+234 816 439 4788', 'Phone number copied!')" class="p-2 rounded-lg hover:bg-amber-500/10 text-amber-400 transition-colors" title="Copy Phone">
-                  <i data-lucide="copy" class="w-4 h-4"></i>
-                </button>
-              </div>
-
-              <div class="flex items-center gap-3 p-3">
-                <div class="w-9 h-9 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center">
-                  <i data-lucide="map-pin" class="w-4 h-4"></i>
-                </div>
-                <div>
-                  <div class="text-xs text-slate-400 uppercase font-mono">Base of Operations</div>
-                  <div class="text-xs font-bold">Umuahia, Abia State, Nigeria (440221)</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Terminal Mock Box -->
-            <div class="p-4 rounded-xl font-mono text-xs border border-slate-800 bg-slate-950 text-slate-300">
-              <div class="flex items-center gap-1.5 pb-2 mb-2 border-b border-slate-800">
-                <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
-                <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
-                <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
-                <span class="text-xs text-slate-500 ml-2">bash - nedum-daemon</span>
-              </div>
-              <code>
-                $ nedum --status<br>
-                <span class="text-emerald-400">&gt; Available for MERN Stack Roles &amp; Bespoke Footwear Orders</span>
-              </code>
-            </div>
-          </div>
-
-          <!-- Single Working Contact Form (Formspree Integrated) -->
-          <div class="lg:col-span-7">
-            <form id="contactForm" action="https://formspree.io/f/xnpnbypq" method="POST" class="p-8 rounded-2xl border border-slate-800 bg-slate-900/80 space-y-4 shadow-xl">
-              <div id="formSuccessAlert" class="hidden p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center gap-3 text-xs">
-                <i data-lucide="check-circle" class="w-5 h-5 flex-shrink-0"></i>
-                <span>Your message was dispatched successfully! Chinedum will get back to you shortly.</span>
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Your Name</label>
-                  <input type="text" name="name" id="formName" placeholder="Your Name...." required class="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-950 text-white text-xs outline-none focus:ring-2 focus:ring-amber-500 transition-all">
-                  <p id="errName" class="text-[10px] text-red-400 mt-1 hidden">Please provide your name.</p>
-                </div>
-                <div>
-                  <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Email Address</label>
-                  <input type="email" name="email" id="formEmail" placeholder="Your Email...." required class="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-950 text-white text-xs outline-none focus:ring-2 focus:ring-amber-500 transition-all">
-                  <p id="errEmail" class="text-[10px] text-red-400 mt-1 hidden">Please enter a valid email.</p>
-                </div>
-              </div>
-
-              <div>
-                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Engagement Category</label>
-                <select name="category" id="formCategory" class="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-950 text-white text-xs outline-none focus:ring-2 focus:ring-amber-500 transition-all">
-                  <option value="Full Stack Web Application">Full Stack Web Application (React / Node.js)</option>
-                  <option value="Bespoke Footwear Commission">Bespoke Footwear Commission (MarkZu Atelier)</option>
-                  <option value="Freelance Digital Architecture">Freelance Digital Architecture &amp; Consulting</option>
-                  <option value="Technical Documentation & Editing">Technical Documentation &amp; Proofreading</option>
-                </select>
-              </div>
-
-              <div>
-                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Message / Specifications</label>
-                <textarea name="message" id="formMessage" rows="4" placeholder="Detail your project goals, timelines, or custom footwear measurements..." required class="w-full px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-950 text-white text-xs outline-none focus:ring-2 focus:ring-amber-500 transition-all"></textarea>
-                <p id="errMessage" class="text-[10px] text-red-400 mt-1 hidden">Message must be at least 12 characters.</p>
-              </div>
-
-              <button type="submit" id="submitBtn" class="w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-slate-950 shadow-lg shadow-amber-500/20 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="22" y1="2" x2="11" y2="13"></line>
-                  <polygon points="22,2 15,22 11,13 2,9 22,2"></polygon>
-                </svg>
-                <span id="submitBtnText">Submit</span>
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="py-12 border-t border-slate-800 bg-slate-950 text-xs text-slate-400 relative z-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2">
-        <span class="font-extrabold animate-pulse text-amber-400">NEDUM.</span>
-        <span>— Chinedum Mark Ndubueze • Full Stack Developer &amp; Artisan.</span>
-      </div>
-      <div class="flex items-center gap-5">
-        <a href="https://github.com/ibezimmark" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors flex items-center gap-1.5" title="GitHub Profile">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-          <span>GitHub</span>
-        </a>
-        <a href="https://linkedin.com/in/chinedum-mark" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors flex items-center gap-1.5" title="LinkedIn Profile">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-          <span>LinkedIn</span>
-        </a>
-        <a href="#hero" class="hover:text-amber-400 transition-colors font-semibold">Back to Apex</a>
-        <span>Umuahia 440221, Nigeria</span>
-        <span>© <span id="currentYear"></span> All Rights Reserved.</span>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Project Details Inspection Modal -->
-  <div id="projectModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
-    <div class="relative max-w-2xl w-full rounded-3xl border border-slate-800 bg-slate-900 text-white shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
-      <button onclick="closeProjectModal()" class="absolute top-4 right-4 z-10 p-2 rounded-full bg-slate-950/70 text-white hover:bg-slate-950 transition-colors">
-        <i data-lucide="x" class="w-5 h-5"></i>
+<!-- Header -->
+<header id="navbar" class="fixed inset-x-0 top-0 z-50 bg-white/85 dark:bg-ink-950/85 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800/80 transition-colors">
+  <div class="wrap h-16 flex items-center justify-between gap-3">
+    <a href="#hero" class="flex items-center gap-2.5 group shrink-0">
+      <span class="w-9 h-9 rounded-xl bg-brand-600 text-white grid place-items-center font-display font-bold text-sm transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105">NM</span>
+      <span class="font-display font-bold text-lg tracking-wide text-slate-900 dark:text-white">NEDUM<span class="text-brand-500">.</span></span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-0.5" aria-label="Primary">
+      <a href="#hero" class="nav-link">Home</a><a href="#crafts" class="nav-link">Dual Craft</a><a href="#about" class="nav-link">About</a><a href="#skills" class="nav-link">Skills</a><a href="#projects" class="nav-link">Projects</a><a href="#timeline" class="nav-link">Experience</a><a href="#contact" class="nav-link">Contact</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button id="themeToggleBtn" class="iconbtn" aria-label="Toggle light and dark mode" title="Toggle theme">
+        <i data-lucide="moon" class="w-4 h-4 dark:hidden"></i><i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
       </button>
-      <div class="h-64 sm:h-72 w-full overflow-hidden relative">
-        <img id="modalImage" src="" alt="Project Preview" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+      <a href="https://github.com/ibezimmark" target="_blank" rel="noopener noreferrer" class="iconbtn hidden sm:grid" aria-label="GitHub profile" title="GitHub">
+        <svg class="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+      <a href="https://www.linkedin.com/in/chinedum-ndubueze-a7744b362" target="_blank" rel="noopener noreferrer" class="iconbtn hidden sm:grid" aria-label="LinkedIn profile" title="LinkedIn">
+        <svg class="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+      <a href="https://markzu-linktree.netlify.app" class="btn btn-p !py-2.5 hidden md:inline-flex">Let's talk <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></a>
+      <button id="mobileMenuBtn" class="iconbtn lg:hidden" aria-label="Open menu" aria-expanded="false"><i data-lucide="menu" class="w-5 h-5"></i></button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-ink-950 max-h-[calc(100vh-4rem)] overflow-y-auto">
+    <div class="wrap py-4 grid gap-1">
+      <a href="#hero" class="nav-link mobile-nav-link !py-3">Home</a><a href="#crafts" class="nav-link mobile-nav-link !py-3">Dual Craft</a><a href="#about" class="nav-link mobile-nav-link !py-3">About</a><a href="#skills" class="nav-link mobile-nav-link !py-3">Skills</a><a href="#projects" class="nav-link mobile-nav-link !py-3">Projects</a><a href="#timeline" class="nav-link mobile-nav-link !py-3">Experience</a><a href="#contact" class="nav-link mobile-nav-link !py-3">Contact</a>
+      <div class="grid grid-cols-2 gap-3 pt-3 mt-2 border-t border-slate-200 dark:border-slate-800">
+        <a href="https://github.com/ibezimmark" target="_blank" rel="noopener noreferrer" class="btn btn-o">GitHub</a>
+        <a href="https://www.linkedin.com/in/chinedum-ndubueze-a7744b362" target="_blank" rel="noopener noreferrer" class="btn btn-o">LinkedIn</a>
       </div>
-      <div class="p-6 sm:p-8 overflow-y-auto space-y-4">
-        <div id="modalCategory" class="text-[10px] font-bold uppercase tracking-widest text-amber-400"></div>
-        <h2 id="modalTitle" class="text-xl sm:text-2xl font-black"></h2>
-        <p id="modalDescription" class="text-xs sm:text-sm leading-relaxed text-slate-300"></p>
-        <div>
-          <h4 class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">Technical &amp; Material Specifications</h4>
-          <div id="modalTags" class="flex flex-wrap gap-2"></div>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- Hero -->
+<section id="hero" class="relative overflow-hidden pt-28 sm:pt-36 pb-16 sm:pb-24">
+  <div class="grid-bg absolute inset-0 pointer-events-none"></div>
+  <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[640px] max-w-full h-[360px] rounded-full bg-brand-400/20 dark:bg-brand-500/10 blur-[110px] pointer-events-none"></div>
+  <div class="wrap relative text-center">
+    <div class="animate-rise inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold uppercase tracking-wider border border-brand-500/40 bg-brand-100/70 dark:bg-brand-400/10 text-brand-800 dark:text-brand-300">
+      <span class="relative flex w-2 h-2"><span class="absolute inline-flex w-full h-full rounded-full bg-emerald-500 opacity-70 animate-ping"></span><span class="relative inline-flex w-2 h-2 rounded-full bg-emerald-500"></span></span>
+      Open to engineering roles &amp; bespoke commissions
+    </div>
+    <h1 class="animate-rise font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.08] mt-6" style="animation-delay:.08s">
+      Chinedum Mark <span class="bg-gradient-to-r from-brand-600 via-brand-500 to-sky-500 dark:from-brand-400 dark:via-sky-300 dark:to-brand-500 bg-clip-text text-transparent">Ndubueze</span>
+    </h1>
+    <p class="animate-rise mt-4 min-h-[2rem] text-lg sm:text-2xl font-semibold text-slate-600 dark:text-slate-400" style="animation-delay:.16s">
+      <span id="typewriterText" class="accent"></span><span class="inline-block w-0.5 h-5 sm:h-7 bg-brand-500 ml-1 align-middle animate-pulse"></span>
+    </p>
+    <p class="animate-rise max-w-2xl mx-auto mt-5 text-sm sm:text-base leading-relaxed muted" style="animation-delay:.24s">
+      Architecting resilient full-stack MERN and cloud systems, alongside handcrafting bespoke luxury leather footwear at <strong class="accent">MarkZu Footwears</strong>. Based in Umuahia, Abia State, Nigeria.
+    </p>
+    <div class="animate-rise mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3" style="animation-delay:.32s">
+      <a href="resume.pdf" target="_blank" rel="noopener noreferrer" download="resume.pdf" class="btn btn-p"><i data-lucide="download" class="w-4 h-4"></i> Download resume</a>
+      <a href="#projects" class="btn btn-o">View projects <i data-lucide="arrow-right" class="w-4 h-4 accent"></i></a>
+      <a href="#contact" class="btn btn-o">Contact me <i data-lucide="mail" class="w-4 h-4 accent"></i></a>
+    </div>
+
+    <div class="mt-12 sm:mt-14 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+      <div class="surface lift p-4 sm:p-5 text-center"><div class="font-display text-3xl sm:text-4xl font-extrabold text-brand-600 dark:text-brand-400 tabular-nums">~50%</div><div class="text-xs font-medium muted mt-1.5 leading-snug">Faster page loads on a production React storefront</div></div>
+      <div class="surface lift p-4 sm:p-5 text-center"><div class="font-display text-3xl sm:text-4xl font-extrabold text-brand-600 dark:text-brand-400 tabular-nums">~70%</div><div class="text-xs font-medium muted mt-1.5 leading-snug">Less manual admin through Stripe and order automation</div></div>
+      <div class="surface lift p-4 sm:p-5 text-center"><div class="font-display text-3xl sm:text-4xl font-extrabold text-brand-600 dark:text-brand-400 tabular-nums">+35%</div><div class="text-xs font-medium muted mt-1.5 leading-snug">Online revenue growth within six months</div></div>
+      <div class="surface lift p-4 sm:p-5 text-center"><div class="font-display text-3xl sm:text-4xl font-extrabold text-brand-600 dark:text-brand-400 tabular-nums">150+</div><div class="text-xs font-medium muted mt-1.5 leading-snug">Bespoke hand-welted pairs crafted for clients</div></div>
+    </div>
+
+    <div class="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-[11px] sm:text-xs font-mono muted">
+      <span><b class="accent">STACK</b> React · Node.js · MongoDB · Tailwind</span>
+      <span><b class="accent">ATELIER</b> Hand-welted footwear · MarkZu</span>
+      <span><b class="accent">BASE</b> Umuahia, Abia State, Nigeria</span>
+    </div>
+  </div>
+</section>
+
+<!-- Dual craft -->
+<section id="crafts" class="sec sec-alt">
+  <div class="wrap">
+    <div class="text-center mb-10 sm:mb-12">
+      <div class="eyebrow"><i data-lucide="compass" class="w-3.5 h-3.5"></i> Synergy of two disciplines</div>
+      <h2 class="h2">The dual-craft paradigm</h2>
+      <p class="lead mx-auto">Harmonizing architectural digital engineering logic with traditional bespoke leathercraft.</p>
+    </div>
+    <div class="flex justify-center mb-8">
+      <div class="inline-flex flex-col sm:flex-row gap-1.5 p-1.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-ink-900 w-full sm:w-auto">
+        <button id="craftTabWeb" onclick="switchCraft('web')" class="chip on !rounded-xl flex items-center justify-center gap-2"><i data-lucide="code" class="w-4 h-4"></i> Software architecture</button>
+        <button id="craftTabFootwear" onclick="switchCraft('footwear')" class="chip !rounded-xl flex items-center justify-center gap-2"><i data-lucide="scissors" class="w-4 h-4"></i> MarkZu footwear atelier</button>
+      </div>
+    </div>
+    <div id="craftCard" class="surface max-w-4xl mx-auto p-6 sm:p-10 shadow-xl"></div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="sec">
+  <div class="wrap">
+    <div class="text-center mb-12 sm:mb-14"><div class="eyebrow"><i data-lucide="user" class="w-3.5 h-3.5"></i> Bio &amp; background</div><h2 class="h2">About Chinedum Mark</h2></div>
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="relative group w-full max-w-xs sm:max-w-sm">
+          <div class="absolute -inset-2 rounded-3xl bg-gradient-to-br from-brand-400 to-sky-600 opacity-30 blur-lg group-hover:opacity-50 transition duration-500"></div>
+          <div class="relative aspect-[4/5] rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-200 dark:bg-ink-800 shadow-2xl">
+            <img src="/src/Nedum.jpeg" alt="Chinedum Mark Ndubueze" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80'">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent flex items-end p-5">
+              <div><h3 class="!text-white font-bold">Chinedum Mark Ndubueze</h3><p class="text-xs text-brand-300 flex items-center gap-1 mt-0.5 font-medium"><i data-lucide="map-pin" class="w-3 h-3"></i> Umuahia, Abia State, Nigeria</p></div>
+            </div>
+          </div>
         </div>
-        <div class="pt-4 flex items-center gap-3">
-          <a href="#contact" onclick="closeProjectModal()" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold uppercase tracking-wider transition-all shadow-md">
-            Discuss Specifications
-          </a>
+      </div>
+      <div class="lg:col-span-7 space-y-5">
+        <h3 class="font-display text-2xl sm:text-3xl font-bold leading-snug">Harmonizing rigorous engineering discipline with bespoke tactile leathercraft.</h3>
+        <p class="leading-relaxed">Holding a Bachelor in Electrical and Electronics Engineering (B.Eng.) from <strong class="accent">Michael Okpara University of Agriculture Umudike</strong>, I have cultivated a dual expertise: architecting resilient full-stack web systems and handcrafting luxury leather footwear. My journey bridges the digital and artisanal, merging precision engineering with the tactile artistry of bespoke shoemaking.</p>
+        <p class="leading-relaxed">At <strong class="accent">MarkZu Footwears</strong>, I led the full-stack e-commerce deployment: optimizing queries to drop page load times by 50%, engineering automated Stripe payment processing to reduce manual workflows by 70%, and achieving a 35% online revenue climb in six months.</p>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div class="surface p-3.5 flex items-center gap-3"><div class="icon-box !w-9 !h-9 text-base">🇳🇬</div><div><span class="block font-mono text-[10px] muted">NATIONALITY</span><span class="font-bold text-sm text-slate-900 dark:text-white">Nigerian (Abia State)</span></div></div>
+          <div class="surface p-3.5 flex items-center gap-3"><div class="icon-box !w-9 !h-9"><i data-lucide="graduation-cap" class="w-4 h-4"></i></div><div><span class="block font-mono text-[10px] muted">EDUCATION</span><span class="font-bold text-sm text-slate-900 dark:text-white">MOUAU Engineering (B.Eng.)</span></div></div>
+        </div>
+        <div class="flex flex-col sm:flex-row flex-wrap gap-3 pt-1">
+          <a href="#contact" class="btn btn-p">Commission a project</a>
+          <button onclick="copyToClipboard('markzuibezim@gmail.com','Email copied!')" class="btn btn-o"><i data-lucide="copy" class="w-4 h-4 accent"></i> Copy email</button>
+          <a href="resume.pdf" target="_blank" rel="noopener noreferrer" download="resume.pdf" class="btn btn-o"><i data-lucide="download" class="w-4 h-4 accent"></i> Download resume</a>
         </div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- Scroll to Top Floating Button -->
-  <button id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-gradient-to-tr from-amber-500 to-yellow-400 text-slate-950 shadow-2xl hover:scale-110 active:scale-95 transition-all opacity-0 pointer-events-none" aria-label="Scroll to top">
-    <i data-lucide="arrow-up" class="w-5 h-5"></i>
-  </button>
+<!-- Skills -->
+<section id="skills" class="sec sec-alt">
+  <div class="wrap">
+    <div class="text-center mb-10"><div class="eyebrow"><i data-lucide="cpu" class="w-3.5 h-3.5"></i> Technical &amp; artisan skills</div><h2 class="h2">Toolkit &amp; mastery</h2>
+      <p class="lead mx-auto">Full-stack frameworks, database systems, container pipelines, and custom leathercraft techniques.</p></div>
+    <div id="skillsTabs" class="flex flex-wrap justify-center gap-2 mb-8"></div>
+    <div id="skillsGrid" class="grid md:grid-cols-2 gap-4 sm:gap-5 max-w-4xl mx-auto"></div>
+  </div>
+</section>
 
-  <script>
-    /* Data Objects */
-    const PORTFOLIO_DATA = {
-      profile: {
-        name: "Chinedum Mark Ndubueze",
-        brandName: "NEDUM.",
-        alias: "MarkZu",
-        role: "Full Stack Web Developer & Artisan Footwear Designer",
-        location: "Umuahia, Abia State, Nigeria",
-        email: "markzuibezim@gmail.com",
-        phone: "+234 816 439 4788"
-      },
-      dualCrafts: {
-        web: {
-          title: "Full-Stack Software Architecture",
-          subtitle: "Scalable MERN systems, API pipelines, and high-conversion e-commerce engines.",
-          icon: "code",
-          bulletPoints: [
-            "React (ES6+), Node.js, Express, and MongoDB production architectures.",
-            "Engineered end-to-end Stripe payment processing & automated invoice triggers.",
-            "Containerized deployments with Docker and automated GitHub Actions CI/CD pipelines.",
-            "Strict database audit routines guaranteeing 100% customer and operational record integrity."
-          ]
-        },
-        footwear: {
-          title: "MarkZu Footwear Atelier",
-          subtitle: "Bespoke leathercrafting, anatomical custom sizing, and timeless handmade footwear.",
-          icon: "scissors",
-          bulletPoints: [
-            "Hand-welted bespoke shoes, loafers, and artisanal leather accessories.",
-            "Proprietary client measurement and digital sizing intake workflow that eliminated fitting returns.",
-            "Direct integration between custom workshop logistics and automated digital orders.",
-            "Heritage craftsmanship blended with modern digital customer relationship tracking."
-          ]
-        }
-      },
-      skillsByCategory: {
-        "Frontend & UI": [
-          { name: "React (ES6+)", level: 94, note: "Hooks, Context, Performance Optimization" },
-          { name: "JavaScript / TypeScript", level: 90, note: "Modern Async & Functional Architectures" },
-          { name: "Tailwind CSS", level: 100, note: "Responsive Layouts, Token Systems & Utility" },
-          { name: "HTML5 & Semantic Markup", level: 100, note: "Accessible & SEO-first Engineering" }
-        ],
-        "Backend & Cloud": [
-          { name: "Node.js & Express", level: 92, note: "RESTful APIs & Secure Middleware" },
-          { name: "MongoDB & Mongoose", level: 89, note: "Aggregations & Scalable Schemas" },
-          { name: "Stripe Payment Gateway", level: 88, note: "Webhooks, Subscriptions & Checkout" },
-          { name: "Docker & Containers", level: 82, note: "Reproducible Builds & CI/CD Deploys" }
-        ],
-        "Footwear Design & Craft": [
-          { name: "Bespoke Pattern Drafting", level: 100, note: "Custom Foot Anatomy Modeling" },
-          { name: "Hand-Welted Soling", level: 100, note: "Durable Handstitched Soling Methods" },
-          { name: "Anatomical Sizing Intake", level: 100, note: "Zero-Return Sizing Specification Logic" },
-          { name: "Materials Finishing", level: 100, note: "Premium Nigerian & Italian Leathers" }
-        ],
-        "Tools & Professional": [
-          { name: "Git & GitHub Collaboration", level: 94, note: "Feature Branching & Pull Requests" },
-          { name: "Technical Proofreading & Translation", level: 96, note: "Flawless Technical Documentation" },
-          { name: "Data Auditing & Integrity", level: 95, note: "100% Record Verifiability" }
-        ]
-      },
-      projects: [
-        {
-          id: "markzu-footwears",
-          title: "MarkZu Footwears Platform",
-          category: "Web Development",
-          description: "Full-stack webpage built with React, Node.js.",
-          longDescription: "Architected and deployed the official MarkZu digital storefront. Optimized backend queries and responsive React UI to decrease initial page latency by ~50% and accelerate checkout conversion by ~20%. Integrated automated email notifications and order-status trackers, slating manual workload down by 70%.",
-          image: "/src/markzu branded nylon.jpeg",
-          link: "https://markzu-linktree.netlify.app",
-          tags: ["React", "Node.js", "Tailwind CSS"],
-          metrics: "50% Speed Boost • 70% Less Manual Admin • +35% 6-Month Sales"
-        },
-        {
-          id: "sizing-workflow",
-          title: "UGC Videos, AI Training",
-          category: "Freelance Solutions",
-          description: "Automated client anatomical data collection workflow eliminating human sizing errors and delivery schedule misalignments.",
-          longDescription: "Developed a purpose-built client intake wizard for bespoke footwear commissions. It validates instep, foot length, and width measurements against standardized charts, dynamically producing cut-sheets and reducing post-production return modifications to near zero.",
-          image: "https://images.unsplash.com/photo-1449247709967-d4461a6a6103?auto=format&fit=crop&w=900&q=80",
-          link: "https://markzu-linktree.netlify.app",
-          tags: ["JavaScript ES6", "React", "State Management", "Data Validation"],
-          metrics: "Zero Sizing Errors • Automated Client Cut-sheets • 100% Record Integrity"
-        },
-        {
-          id: "atelier-signature",
-          title: "MarkZu Hand-Welted Signature Collection",
-          category: "Footwear Craft",
-          description: "Handcrafted collection of bespoke leather Oxfords, monk straps, and contemporary casual footwear built with artisan methods.",
-          longDescription: "Designed, cut, lasted, and welted high-end formal footwear for executive clients across Nigeria. Combined heritage hand-stitching with custom orthopedic inner cushioning to create footwear that balances visual distinction with enduring durability.",
-          image: "/src/markzu footwear.jpeg",
-          link: "https://markzu-linktree.netlify.app",
-          tags: ["Hand Welted", "Genuine Leather", "Custom Lasting", "Bespoke Finishing"],
-          metrics: "Over 150+ Bespoke Pairs Crafted • 100% Client Approval Rating"
-        },
-        {
-          id: "records-audit",
-          title: "Enterprise Inventory & Audit Gateway",
-          category: "Web Development",
-          description: "Lightweight, containerized internal dashboard for tracking raw material leather inventories, production pipeline stages, and supplier ledgers.",
-          longDescription: "Constructed using Node.js, Express, and Docker. Implemented role-based access control, cryptographic verification for procurement receipts, and automated replenishment alerts for high-grade leather hides and soling materials.",
-          image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
-          link: "https://markzu-linktree.netlify.app",
-          tags: ["Node.js", "Docker", "REST API", "Database Audits"],
-          metrics: "Live Supply Tracking • 100% Procurement Verification"
-        }
-      ],
-      timeline: [
-        {
-          period: "2021 — Present",
-          role: "Lead Full Stack Web Developer & Founder",
-          organization: "MarkZu Footwears",
-          location: "Umuahia, Abia State, Nigeria",
-          type: "work",
-          description: "Directed end-to-end digital transformation and e-commerce engineering alongside the luxury footwear manufacturing atelier.",
-          highlights: [
-            "Cut initial page load times by ~50% through aggressive caching and code splitting in React.",
-            "Integrated Stripe checkout and automated receipt pipelines, reducing manual administrative processing by ~70%.",
-            "Configured Dockerized production releases and CI/CD routines for zero-downtime deploy cycles.",
-            "Expanded online sales by ~35% within 6 months of new platform rollout."
-          ]
-        },
-        {
-          period: "Sept 2018 — Oct 2024",
-          role: "Bachelor of Engineering (B.Eng.)",
-          organization: "Michael Okpara University of Agriculture Umudike (MOUAU)",
-          location: "Umudike, Abia State, Nigeria",
-          type: "education",
-          description: "Completed rigorous engineering training with specialized focus on analytical system modeling, algorithmic problem solving, and structural optimization.",
-          highlights: [
-            "Cultivated rigorous computational mathematics and engineering design methodology.",
-            "Applied structural engineering discipline directly to physical footwear balance and full-stack software architecture.",
-            "Coordinated technical proofreading and peer engineering documentation panels."
-          ]
-        },
-        {
-          period: "2022 — Present",
-          role: "Freelance Technical Specialist & Consultant",
-          organization: "Independent Engagements",
-          location: "Remote / Nigeria",
-          type: "work",
-          description: "Delivering bespoke digital web solutions, API integration, data auditing, and editorial translation for discerning business clients.",
-          highlights: [
-            "Conducted thorough data integrity audits eliminating client recording errors.",
-            "Served as technical proofreader and editor for high-stakes business briefs and software specs."
-          ]
-        }
-      ]
-    };
+<!-- Projects -->
+<section id="projects" class="sec">
+  <div class="wrap">
+    <div class="text-center mb-10"><div class="eyebrow"><i data-lucide="layers" class="w-3.5 h-3.5"></i> Portfolio of works</div><h2 class="h2">Featured creations &amp; systems</h2>
+      <p class="lead mx-auto">Explore bespoke e-commerce platforms, anatomical intake logic, and handcrafted leather boots.</p></div>
+    <div id="projectFilters" class="flex flex-wrap justify-center gap-2 mb-10"></div>
+    <div id="projectsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"></div>
+  </div>
+</section>
 
-    let currentTheme = 'dark';
-    let currentCraft = 'web';
-    let currentSkillCategory = 'Frontend & UI';
-    let currentProjectCategory = 'All';
+<!-- Timeline -->
+<section id="timeline" class="sec sec-alt">
+  <div class="wrap max-w-5xl">
+    <div class="text-center mb-12 sm:mb-14"><div class="eyebrow"><i data-lucide="briefcase" class="w-3.5 h-3.5"></i> Milestones</div><h2 class="h2">Experience &amp; academic journey</h2></div>
+    <div id="timelineContainer" class="relative space-y-8 sm:space-y-10">
+      <div class="absolute top-2 bottom-2 left-[15px] md:left-[calc(8rem+20px)] w-px bg-slate-300 dark:bg-slate-700"></div>
+    </div>
+  </div>
+</section>
 
-    // Theme Switcher Logic
-    const themeToggleBtn = document.getElementById('themeToggleBtn');
-    const themeIcon = document.getElementById('themeIcon');
-    const htmlElem = document.documentElement;
-
-    function applyTheme(theme) {
-      currentTheme = theme;
-      if (theme === 'dark') {
-        htmlElem.classList.add('dark');
-        document.body.classList.remove('bg-stone-50', 'text-stone-900');
-        document.body.classList.add('bg-slate-950', 'text-slate-100');
-        themeIcon.setAttribute('data-lucide', 'sun');
-      } else {
-        htmlElem.classList.remove('dark');
-        document.body.classList.remove('bg-slate-950', 'text-slate-100');
-        document.body.classList.add('bg-stone-50', 'text-stone-900');
-        themeIcon.setAttribute('data-lucide', 'moon');
-      }
-      lucide.createIcons();
-      renderCraft();
-      renderSkills();
-      renderProjects();
-      renderTimeline();
-    }
-
-    themeToggleBtn.addEventListener('click', () => {
-      applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
-      showToast(currentTheme === 'dark' ? 'Obsidian Dark theme activated' : 'Luxury Light theme activated');
-    });
-
-    // Toast Utility
-    function showToast(msg) {
-      const toast = document.getElementById('toast');
-      const toastMsg = document.getElementById('toastMsg');
-      toastMsg.textContent = msg;
- 
-      if (currentTheme === 'dark') {
-        toast.className = 'fixed bottom-6 right-6 z-50 transform transition-all duration-300 pointer-events-auto flex items-center gap-3 px-5 py-3.5 rounded-2xl shadow-2xl border text-sm font-semibold bg-slate-900 border-amber-500/40 text-slate-100 translate-y-0 opacity-100';
-      } else {
-        toast.className = 'fixed bottom-6 right-6 z-50 transform transition-all duration-300 pointer-events-auto flex items-center gap-3 px-5 py-3.5 rounded-2xl shadow-2xl border text-sm font-semibold bg-white border-amber-400 text-stone-900 translate-y-0 opacity-100';
-      }
-
-      setTimeout(() => {
-        toast.classList.add('translate-y-24', 'opacity-0');
-        toast.classList.remove('translate-y-0', 'opacity-100');
-      }, 3500);
-    }
-
-    // Clipboard copy
-    function copyToClipboard(text, successMsg) {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(() => {
-          showToast(successMsg);
-        }).catch(() => {
-          execCommandFallback(text, successMsg);
-        });
-      } else {
-        execCommandFallback(text, successMsg);
-      }
-    }
-
-    function execCommandFallback(text, successMsg) {
-      const el = document.createElement('textarea');
-      el.value = text;
-      el.setAttribute('readonly', '');
-      el.style.position = 'absolute';
-      el.style.left = '-9999px';
-      document.body.appendChild(el);
-      el.select();
-      try {
-        document.execCommand('copy');
-        showToast(successMsg);
-      } catch (err) {
-        showToast('Unable to copy text');
-      }
-      document.body.removeChild(el);
-    }
-
-    // Particle Starfield Constellation
-    function initStarfield() {
-      const canvas = document.getElementById('starfield');
-      const ctx = canvas.getContext('2d');
-      let width = (canvas.width = window.innerWidth);
-      let height = (canvas.height = window.innerHeight);
-
-      window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-      });
-
-      const particleCount = Math.min(Math.floor(width / 22), 65);
-      const particles = [];
-
-      for (let i = 0; i < particleCount; i++) {
-        particles.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: (Math.random() - 0.5) * 0.4,
-          radius: Math.random() * 1.8 + 0.8
-        });
-      }
-
-      function animate() {
-        ctx.clearRect(0, 0, width, height);
-        const isDark = htmlElem.classList.contains('dark');
-        const nodeColor = isDark ? 'rgba(245, 158, 11, ' : 'rgba(217, 119, 6, ';
-        const lineColor = isDark ? 'rgba(212, 175, 55, ' : 'rgba(180, 83, 9, ';
-
-        for (let i = 0; i < particles.length; i++) {
-          const p = particles[i];
-          p.x += p.vx;
-          p.y += p.vy;
-
-          if (p.x < 0) p.x = width;
-          if (p.x > width) p.x = 0;
-          if (p.y < 0) p.y = height;
-          if (p.y > height) p.y = 0;
-
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-          ctx.fillStyle = nodeColor + (isDark ? '0.6)' : '0.4)');
-          ctx.fill();
-
-          for (let j = i + 1; j < particles.length; j++) {
-            const p2 = particles[j];
-            const dx = p.x - p2.x;
-            const dy = p.y - p2.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-
-            if (dist < 110) {
-              ctx.beginPath();
-              ctx.moveTo(p.x, p.y);
-              ctx.lineTo(p2.x, p2.y);
-              const alpha = (1 - dist / 110) * (isDark ? 0.22 : 0.12);
-              ctx.strokeStyle = lineColor + alpha + ')';
-              ctx.lineWidth = 0.75;
-              ctx.stroke();
-            }
-          }
-        }
-        requestAnimationFrame(animate);
-      }
-      animate();
-    }
-
-    // Dynamic Typewriter
-    const typewriterTitles = [
-      "Full Stack Web Developer",
-      "Founder of MarkZu Footwears",
-      "Bespoke Footwear Designer & Artisan",
-      "Freelance Digital Architect",
-      "MOUAU Graduate in Electrical Engineering"
-    ];
-    let typeIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const typewriterElement = document.getElementById('typewriterText');
-
-    function typeLoop() {
-      const currentWord = typewriterTitles[typeIndex];
-      if (isDeleting) {
-        typewriterElement.textContent = currentWord.substring(0, charIndex - 1);
-        charIndex--;
-      } else {
-        typewriterElement.textContent = currentWord.substring(0, charIndex + 1);
-        charIndex++;
-      }
-
-      let speed = isDeleting ? 40 : 80;
-
-      if (!isDeleting && charIndex === currentWord.length) {
-        speed = 2000;
-        isDeleting = true;
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        typeIndex = (typeIndex + 1) % typewriterTitles.length;
-        speed = 500;
-      }
-      setTimeout(typeLoop, speed);
-    }
-
-    // Dual Craft Switcher
-    function switchCraft(craft) {
-      currentCraft = craft;
-      const tabWeb = document.getElementById('craftTabWeb');
-      const tabFootwear = document.getElementById('craftTabFootwear');
-
-      if (craft === 'web') {
-        tabWeb.className = 'flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20';
-        tabFootwear.className = 'flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-slate-400 hover:text-white';
-      } else {
-        tabFootwear.className = 'flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20';
-        tabWeb.className = 'flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-slate-400 hover:text-white';
-      }
-      renderCraft();
-    }
-
-    function renderCraft() {
-      const craft = PORTFOLIO_DATA.dualCrafts[currentCraft];
-      const isDark = currentTheme === 'dark';
-      const container = document.getElementById('craftCard');
-
-      container.className = `max-w-4xl mx-auto rounded-3xl border p-8 sm:p-10 shadow-2xl transition-all ${
-        isDark ? 'bg-slate-900/80 border-slate-800' : 'bg-white border-stone-200 shadow-xl'
-      }`;
-
-      container.innerHTML = `
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-          <div class="md:col-span-4 flex flex-col items-center text-center p-6 rounded-2xl border bg-gradient-to-b from-amber-500/10 to-transparent border-amber-500/20">
-            <div class="w-16 h-16 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center mb-4">
-              <i data-lucide="${craft.icon}" class="w-8 h-8"></i>
-            </div>
-            <h3 class="text-lg font-bold">${currentCraft === 'web' ? 'Full Stack Engineering' : 'MarkZu Atelier'}</h3>
-            <p class="text-xs mt-1.5 ${isDark ? 'text-slate-400' : 'text-stone-600'}">
-              ${currentCraft === 'web' ? 'React • Node.js • Express • MongoDB' : 'Hand-Welted Soles • Anatomical Intake'}
-            </p>
+<!-- Contact -->
+<section id="contact" class="sec">
+  <div class="wrap">
+    <div class="text-center mb-12"><div class="eyebrow"><i data-lucide="send" class="w-3.5 h-3.5"></i> Get in touch</div><h2 class="h2">Initiate a collaboration</h2>
+      <p class="lead mx-auto">Have a full-stack platform to engineer, a freelance mandate, or an artisan footwear commission? Send a message.</p></div>
+    <div class="grid lg:grid-cols-12 gap-8 lg:gap-10">
+      <div class="lg:col-span-5 space-y-5">
+        <div class="surface p-5 sm:p-6 space-y-3">
+          <h3 class="font-bold text-base mb-1">Direct communications</h3>
+          <div class="flex items-center justify-between gap-3 p-3 rounded-xl border border-dashed border-brand-500/50">
+            <div class="flex items-center gap-3 min-w-0"><div class="icon-box !w-9 !h-9"><i data-lucide="mail" class="w-4 h-4"></i></div><div class="min-w-0"><div class="text-[10px] uppercase font-mono muted">Email address</div><div class="text-xs font-bold text-slate-900 dark:text-white truncate">markzuibezim@gmail.com</div></div></div>
+            <button onclick="copyToClipboard('markzuibezim@gmail.com','Email copied!')" class="iconbtn !w-9 !h-9 shrink-0" title="Copy email" aria-label="Copy email"><i data-lucide="copy" class="w-4 h-4"></i></button>
           </div>
-          <div class="md:col-span-8 space-y-4">
-            <h4 class="text-xl font-bold">${craft.title}</h4>
-            <p class="text-sm leading-relaxed ${isDark ? 'text-slate-300' : 'text-stone-600'}">${craft.subtitle}</p>
-            <div class="space-y-2.5 pt-2">
-              ${craft.bulletPoints.map(pt => `
-                <div class="flex items-start gap-3 text-xs sm:text-sm">
-                  <i data-lucide="check-circle" class="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5"></i>
-                  <span class="${isDark ? 'text-slate-300' : 'text-stone-700'}">${pt}</span>
-                </div>
-              `).join('')}
-            </div>
+          <div class="flex items-center justify-between gap-3 p-3 rounded-xl border border-dashed border-brand-500/50">
+            <div class="flex items-center gap-3 min-w-0"><div class="icon-box !w-9 !h-9"><i data-lucide="phone" class="w-4 h-4"></i></div><div class="min-w-0"><div class="text-[10px] uppercase font-mono muted">Direct line / WhatsApp</div><div class="text-xs font-bold text-slate-900 dark:text-white">+234 816 439 4788</div></div></div>
+            <button onclick="copyToClipboard('+234 816 439 4788','Phone number copied!')" class="iconbtn !w-9 !h-9 shrink-0" title="Copy phone" aria-label="Copy phone number"><i data-lucide="copy" class="w-4 h-4"></i></button>
+          </div>
+          <div class="flex items-center gap-3 p-3"><div class="icon-box !w-9 !h-9"><i data-lucide="map-pin" class="w-4 h-4"></i></div><div><div class="text-[10px] uppercase font-mono muted">Base of operations</div><div class="text-xs font-bold text-slate-900 dark:text-white">Umuahia, Abia State, Nigeria (440221)</div></div></div>
+        </div>
+        <div class="rounded-xl border border-slate-800 bg-ink-950 text-slate-300 font-mono text-xs p-4 shadow-lg">
+          <div class="flex items-center gap-1.5 pb-2 mb-2 border-b border-slate-800"><i class="w-2.5 h-2.5 rounded-full bg-red-500/80"></i><i class="w-2.5 h-2.5 rounded-full bg-sky-500/80"></i><i class="w-2.5 h-2.5 rounded-full bg-green-500/80"></i><span class="text-slate-500 ml-2">bash - nedum-daemon</span></div>
+          <code>$ nedum --status<br><span class="text-emerald-400">&gt; Available for MERN stack roles &amp; bespoke footwear orders</span></code>
+        </div>
+      </div>
+      <div class="lg:col-span-7">
+        <form id="contactForm" action="https://formspree.io/f/xnpnbypq" method="POST" class="surface p-5 sm:p-8 space-y-4 shadow-xl" novalidate>
+          <div id="formSuccessAlert" class="hidden p-4 rounded-xl bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-300 dark:border-emerald-500/30 text-emerald-800 dark:text-emerald-400 flex items-center gap-3 text-xs"><i data-lucide="check-circle" class="w-5 h-5 shrink-0"></i><span>Your message was dispatched successfully! Chinedum will get back to you shortly.</span></div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div><label class="lbl" for="formName">Your name</label><input type="text" name="name" id="formName" placeholder="Your name" required autocomplete="name" class="field"><p id="errName" class="err">Please provide your name.</p></div>
+            <div><label class="lbl" for="formEmail">Email address</label><input type="email" name="email" id="formEmail" placeholder="you@example.com" required autocomplete="email" class="field"><p id="errEmail" class="err">Please enter a valid email.</p></div>
+          </div>
+          <div><label class="lbl" for="formCategory">Engagement category</label>
+            <select name="category" id="formCategory" class="field">
+              <option value="Full Stack Web Application">Full Stack Web Application (React / Node.js)</option>
+              <option value="Bespoke Footwear Commission">Bespoke Footwear Commission (MarkZu Atelier)</option>
+              <option value="Freelance Digital Architecture">Freelance Digital Architecture &amp; Consulting</option>
+              <option value="Technical Documentation & Editing">Technical Documentation &amp; Proofreading</option>
+            </select></div>
+          <div><label class="lbl" for="formMessage">Message / specifications</label><textarea name="message" id="formMessage" rows="5" placeholder="Detail your project goals, timelines, or custom footwear measurements..." required class="field resize-y"></textarea><p id="errMessage" class="err">Message must be at least 12 characters.</p></div>
+          <button type="submit" id="submitBtn" class="btn btn-p w-full !py-3.5"><i data-lucide="send" class="w-4 h-4"></i><span id="submitBtnText">Submit</span></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-ink-950 py-10 text-xs muted">
+  <div class="wrap flex flex-col lg:flex-row items-center justify-between gap-5 text-center lg:text-left">
+    <div><span class="font-display font-bold text-base text-slate-900 dark:text-white">NEDUM<span class="text-brand-500">.</span></span> <span class="ml-1">Chinedum Mark Ndubueze · Full Stack Developer &amp; Artisan</span></div>
+    <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+      <a href="https://github.com/ibezimmark" target="_blank" rel="noopener noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">GitHub</a>
+      <a href="https://www.linkedin.com/in/chinedum-ndubueze-a7744b362" target="_blank" rel="noopener noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">LinkedIn</a>
+      <a href="#hero" class="font-semibold hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Back to top</a>
+      <span>Umuahia 440221, Nigeria</span><span>© <span id="currentYear"></span> All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Project modal -->
+<div id="projectModal" class="fixed inset-0 z-[65] hidden items-center justify-center p-3 sm:p-6 bg-slate-950/70 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="surface animate-pop relative w-full max-w-2xl max-h-[92vh] flex flex-col overflow-hidden !shadow-2xl">
+    <button onclick="closeProjectModal()" class="absolute top-3 right-3 z-10 w-9 h-9 grid place-items-center rounded-full bg-slate-950/70 text-white hover:bg-slate-950 hover:rotate-90 transition" aria-label="Close"><i data-lucide="x" class="w-5 h-5"></i></button>
+    <div class="h-48 sm:h-64 shrink-0 relative bg-slate-200 dark:bg-ink-900"><img id="modalImage" src="" alt="" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div></div>
+    <div class="p-5 sm:p-8 overflow-y-auto space-y-4">
+      <div id="modalCategory" class="eyebrow !mb-0"></div>
+      <h2 id="modalTitle" class="font-display text-xl sm:text-2xl font-bold"></h2>
+      <p id="modalDescription" class="text-sm leading-relaxed"></p>
+      <div><h4 class="lbl">Technical &amp; material specifications</h4><div id="modalTags" class="flex flex-wrap gap-2"></div></div>
+      <a href="#contact" onclick="closeProjectModal()" class="btn btn-p">Discuss specifications</a>
+    </div>
+  </div>
+</div>
+
+<button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-5 left-4 sm:left-auto sm:right-24 sm:bottom-6 z-40 w-11 h-11 grid place-items-center rounded-full bg-brand-600 text-white shadow-xl hover:scale-110 active:scale-95 transition-all opacity-0 pointer-events-none" aria-label="Scroll to top"><i data-lucide="arrow-up" class="w-5 h-5"></i></button>
+
+<script>
+const PORTFOLIO_DATA = {
+  dualCrafts: {
+    web: { title: "Full-Stack Software Architecture", subtitle: "Scalable MERN systems, API pipelines, and high-conversion e-commerce engines.", icon: "code", badge: "Full Stack Engineering", stack: "React • Node.js • Express • MongoDB",
+      bulletPoints: ["React (ES6+), Node.js, Express, and MongoDB production architectures.","Engineered end-to-end Stripe payment processing & automated invoice triggers.","Containerized deployments with Docker and automated GitHub Actions CI/CD pipelines.","Strict database audit routines guaranteeing 100% customer and operational record integrity."] },
+    footwear: { title: "MarkZu Footwear Atelier", subtitle: "Bespoke leathercrafting, anatomical custom sizing, and timeless handmade footwear.", icon: "scissors", badge: "MarkZu Atelier", stack: "Hand-Welted Soles • Anatomical Intake",
+      bulletPoints: ["Hand-welted bespoke shoes, loafers, and artisanal leather accessories.","Proprietary client measurement and digital sizing intake workflow that eliminated fitting returns.","Direct integration between custom workshop logistics and automated digital orders.","Heritage craftsmanship blended with modern digital customer relationship tracking."] }
+  },
+  skillsByCategory: {
+    "Frontend & UI": [
+      { name: "React (ES6+)", level: 94, note: "Hooks, Context, Performance Optimization" },
+      { name: "JavaScript / TypeScript", level: 90, note: "Modern Async & Functional Architectures" },
+      { name: "Tailwind CSS", level: 100, note: "Responsive Layouts, Token Systems & Utility" },
+      { name: "HTML5 & Semantic Markup", level: 100, note: "Accessible & SEO-first Engineering" }],
+    "Backend & Cloud": [
+      { name: "Node.js & Express", level: 92, note: "RESTful APIs & Secure Middleware" },
+      { name: "MongoDB & Mongoose", level: 89, note: "Aggregations & Scalable Schemas" },
+      { name: "Stripe Payment Gateway", level: 88, note: "Webhooks, Subscriptions & Checkout" },
+      { name: "Docker & Containers", level: 82, note: "Reproducible Builds & CI/CD Deploys" }],
+    "Footwear Design & Craft": [
+      { name: "Bespoke Pattern Drafting", level: 100, note: "Custom Foot Anatomy Modeling" },
+      { name: "Hand-Welted Soling", level: 100, note: "Durable Handstitched Soling Methods" },
+      { name: "Anatomical Sizing Intake", level: 100, note: "Zero-Return Sizing Specification Logic" },
+      { name: "Materials Finishing", level: 100, note: "Premium Nigerian & Italian Leathers" }],
+    "Tools & Professional": [
+      { name: "Git & GitHub Collaboration", level: 94, note: "Feature Branching & Pull Requests" },
+      { name: "Technical Proofreading & Translation", level: 96, note: "Flawless Technical Documentation" },
+      { name: "Data Auditing & Integrity", level: 95, note: "100% Record Verifiability" }]
+  },
+  projects: [
+    { id: "markzu-footwears", title: "MarkZu Footwears Platform", category: "Web Development", description: "Full-stack webpage built with React, Node.js.",
+      longDescription: "Architected and deployed the official MarkZu digital storefront. Optimized backend queries and responsive React UI to decrease initial page latency by ~50% and accelerate checkout conversion by ~20%. Integrated automated email notifications and order-status trackers, cutting manual workload by 70%.",
+      image: "/src/markzu branded nylon.jpeg", link: "https://markzu-linktree.netlify.app", tags: ["React","Node.js","Tailwind CSS"], metrics: "50% speed boost • 70% less manual admin • +35% 6-month sales" },
+    { id: "sizing-workflow", title: "UGC Videos, AI Training", category: "Freelance Solutions", description: "Automated client anatomical data collection workflow eliminating human sizing errors and delivery schedule misalignments.",
+      longDescription: "Developed a purpose-built client intake wizard for bespoke footwear commissions. It validates instep, foot length, and width measurements against standardized charts, dynamically producing cut-sheets and reducing post-production return modifications to near zero.",
+      image: "https://images.unsplash.com/photo-1449247709967-d4461a6a6103?auto=format&fit=crop&w=900&q=80", link: "https://markzu-linktree.netlify.app", tags: ["JavaScript ES6","React","State Management","Data Validation"], metrics: "Zero sizing errors • Automated client cut-sheets • 100% record integrity" },
+    { id: "atelier-signature", title: "MarkZu Hand-Welted Signature Collection", category: "Footwear Craft", description: "Handcrafted collection of bespoke leather Oxfords, monk straps, and contemporary casual footwear built with artisan methods.",
+      longDescription: "Designed, cut, lasted, and welted high-end formal footwear for executive clients across Nigeria. Combined heritage hand-stitching with custom orthopedic inner cushioning to create footwear that balances visual distinction with enduring durability.",
+      image: "/src/markzu footwear.jpeg", link: "https://markzu-linktree.netlify.app", tags: ["Hand Welted","Genuine Leather","Custom Lasting","Bespoke Finishing"], metrics: "150+ bespoke pairs crafted • 100% client approval rating" },
+    { id: "records-audit", title: "Enterprise Inventory & Audit Gateway", category: "Web Development", description: "Lightweight, containerized internal dashboard for tracking raw material leather inventories, production pipeline stages, and supplier ledgers.",
+      longDescription: "Constructed using Node.js, Express, and Docker. Implemented role-based access control, cryptographic verification for procurement receipts, and automated replenishment alerts for high-grade leather hides and soling materials.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80", link: "https://markzu-linktree.netlify.app", tags: ["Node.js","Docker","REST API","Database Audits"], metrics: "Live supply tracking • 100% procurement verification" }
+  ],
+  timeline: [
+    { period: "2021 — Present", role: "Lead Full Stack Web Developer & Founder", organization: "MarkZu Footwears", location: "Umuahia, Abia State, Nigeria", type: "work",
+      description: "Directed end-to-end digital transformation and e-commerce engineering alongside the luxury footwear manufacturing atelier.",
+      highlights: ["Cut initial page load times by ~50% through aggressive caching and code splitting in React.","Integrated Stripe checkout and automated receipt pipelines, reducing manual administrative processing by ~70%.","Configured Dockerized production releases and CI/CD routines for zero-downtime deploy cycles.","Expanded online sales by ~35% within 6 months of new platform rollout."] },
+    { period: "Sept 2018 — Oct 2024", role: "Bachelor of Engineering (B.Eng.)", organization: "Michael Okpara University of Agriculture Umudike (MOUAU)", location: "Umudike, Abia State, Nigeria", type: "education",
+      description: "Completed rigorous engineering training with specialized focus on analytical system modeling, algorithmic problem solving, and structural optimization.",
+      highlights: ["Cultivated rigorous computational mathematics and engineering design methodology.","Applied structural engineering discipline directly to physical footwear balance and full-stack software architecture.","Coordinated technical proofreading and peer engineering documentation panels."] },
+    { period: "2022 — Present", role: "Freelance Technical Specialist & Consultant", organization: "Independent Engagements", location: "Remote / Nigeria", type: "work",
+      description: "Delivering bespoke digital web solutions, API integration, data auditing, and editorial translation for discerning business clients.",
+      highlights: ["Conducted thorough data integrity audits eliminating client recording errors.","Served as technical proofreader and editor for high-stakes business briefs and software specs."] }
+  ]
+};
+
+let currentCraft = 'web', currentSkillCategory = 'Frontend & UI', currentProjectCategory = 'All';
+const icons = () => window.lucide && lucide.createIcons();
+const FALLBACK_IMG = 'https://images.unsplash.com/photo-1449247709967-d4461a6a6103?auto=format&fit=crop&w=900&q=80';
+
+/* Theme */
+document.getElementById('themeToggleBtn').addEventListener('click', () => {
+  const dark = document.documentElement.classList.toggle('dark');
+  try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+  showToast(dark ? 'Dark theme activated' : 'Light theme activated');
+});
+
+/* Toast */
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  t.classList.remove('translate-y-24', 'opacity-0'); t.classList.add('translate-y-0', 'opacity-100');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { t.classList.add('translate-y-24', 'opacity-0'); t.classList.remove('translate-y-0', 'opacity-100'); }, 3200);
+}
+function copyToClipboard(text, msg) {
+  const fallback = () => {
+    const el = document.createElement('textarea'); el.value = text; el.style.cssText = 'position:absolute;left:-9999px';
+    document.body.appendChild(el); el.select();
+    try { document.execCommand('copy'); showToast(msg); } catch (e) { showToast('Unable to copy text'); }
+    document.body.removeChild(el);
+  };
+  navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(text).then(() => showToast(msg)).catch(fallback) : fallback();
+}
+
+/* Typewriter */
+const titles = ["Full Stack Web Developer","Founder of MarkZu Footwears","Bespoke Footwear Designer & Artisan","Freelance Digital Architect","MOUAU Graduate in Electrical Engineering"];
+let ti = 0, ci = 0, del = false;
+function typeLoop() {
+  const w = titles[ti], el = document.getElementById('typewriterText');
+  el.textContent = w.substring(0, del ? --ci : ++ci);
+  let speed = del ? 35 : 75;
+  if (!del && ci === w.length) { speed = 1800; del = true; }
+  else if (del && ci === 0) { del = false; ti = (ti + 1) % titles.length; speed = 400; }
+  setTimeout(typeLoop, speed);
+}
+
+/* Dual craft */
+function switchCraft(c) {
+  currentCraft = c;
+  document.getElementById('craftTabWeb').classList.toggle('on', c === 'web');
+  document.getElementById('craftTabFootwear').classList.toggle('on', c === 'footwear');
+  renderCraft();
+}
+function renderCraft() {
+  const c = PORTFOLIO_DATA.dualCrafts[currentCraft];
+  document.getElementById('craftCard').innerHTML = `
+    <div class="grid md:grid-cols-12 gap-6 md:gap-8 items-center animate-pop">
+      <div class="md:col-span-4 flex flex-col items-center text-center p-6 rounded-2xl border border-brand-500/30 bg-gradient-to-b from-brand-100/80 to-transparent dark:from-brand-400/10">
+        <div class="icon-box !w-16 !h-16 !rounded-2xl mb-4"><i data-lucide="${c.icon}" class="w-8 h-8"></i></div>
+        <h3 class="text-lg font-bold">${c.badge}</h3><p class="text-xs mt-1.5 muted">${c.stack}</p>
+      </div>
+      <div class="md:col-span-8 space-y-4">
+        <h4 class="font-display text-xl sm:text-2xl font-bold">${c.title}</h4>
+        <p class="text-sm leading-relaxed muted">${c.subtitle}</p>
+        <div class="space-y-3 pt-1">${c.bulletPoints.map(p => `<div class="flex items-start gap-3 text-sm"><i data-lucide="check-circle-2" class="w-4 h-4 accent shrink-0 mt-0.5"></i><span>${p}</span></div>`).join('')}</div>
+      </div>
+    </div>`;
+  icons();
+}
+
+/* Skills */
+function renderSkills() {
+  document.getElementById('skillsTabs').innerHTML = Object.keys(PORTFOLIO_DATA.skillsByCategory).map(cat =>
+    `<button onclick="selectSkillCategory('${cat}')" class="chip ${cat === currentSkillCategory ? 'on' : ''}">${cat}</button>`).join('');
+  document.getElementById('skillsGrid').innerHTML = PORTFOLIO_DATA.skillsByCategory[currentSkillCategory].map(s => `
+    <div class="surface lift p-5">
+      <div class="flex justify-between items-center mb-2.5 gap-3"><span class="font-bold text-sm text-slate-900 dark:text-white">${s.name}</span><span class="text-xs font-mono font-bold accent">${s.level}%</span></div>
+      <div class="h-2 rounded-full overflow-hidden bg-slate-200 dark:bg-slate-700/60 mb-2.5"><div class="h-full rounded-full bg-gradient-to-r from-brand-500 to-sky-400" style="width:${s.level}%"></div></div>
+      <div class="text-xs muted">Focus: <span class="text-slate-800 dark:text-slate-300">${s.note}</span></div>
+    </div>`).join('');
+}
+function selectSkillCategory(c) { currentSkillCategory = c; renderSkills(); }
+
+/* Projects */
+const projectCategories = ["All","Web Development","Footwear Craft","Freelance Solutions"];
+function renderProjects() {
+  document.getElementById('projectFilters').innerHTML = projectCategories.map(c =>
+    `<button onclick="selectProjectCategory('${c}')" class="chip ${c === currentProjectCategory ? 'on' : ''}">${c}</button>`).join('');
+  const list = currentProjectCategory === 'All' ? PORTFOLIO_DATA.projects : PORTFOLIO_DATA.projects.filter(p => p.category === currentProjectCategory);
+  document.getElementById('projectsGrid').innerHTML = list.map(p => `
+    <article class="surface lift group overflow-hidden flex flex-col">
+      <div class="relative h-48 overflow-hidden bg-slate-200 dark:bg-ink-900 cursor-pointer" onclick="openProjectModal('${p.id}')">
+        <img src="${p.image}" alt="${p.title}" loading="lazy" class="w-full h-full object-cover transition duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'">
+        <div class="absolute inset-0 bg-slate-950/45 opacity-0 group-hover:opacity-100 transition-opacity grid place-items-center"><span class="w-11 h-11 rounded-full bg-brand-600 text-white grid place-items-center shadow-lg scale-90 group-hover:scale-100 transition"><i data-lucide="eye" class="w-5 h-5"></i></span></div>
+      </div>
+      <div class="p-5 sm:p-6 flex-1 flex flex-col gap-4">
+        <div><div class="eyebrow !mb-1.5 !text-[10px]">${p.category}</div>
+          <h3 class="text-base font-bold group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">${p.title}</h3>
+          <p class="text-xs mt-2 leading-relaxed muted">${p.description}</p></div>
+        <div class="mt-auto space-y-3 pt-4 border-t border-slate-200 dark:border-slate-700/60">
+          <div class="text-[11px] font-mono px-2.5 py-1.5 rounded-lg bg-brand-100 text-brand-900 dark:bg-brand-400/10 dark:text-brand-300">${p.metrics}</div>
+          <div class="flex flex-wrap gap-1.5">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+          <div class="flex items-center justify-between text-xs font-bold pt-1">
+            <button onclick="openProjectModal('${p.id}')" class="accent flex items-center gap-1 hover:gap-2 transition-all">Inspect specs <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
+            ${p.link ? `<a href="${p.link}" target="_blank" rel="noopener noreferrer" class="accent hover:underline inline-flex items-center gap-1">Visit <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></a>` : ''}
           </div>
         </div>
-      `;
-      lucide.createIcons();
-    }
+      </div>
+    </article>`).join('');
+  icons();
+}
+function selectProjectCategory(c) { currentProjectCategory = c; renderProjects(); }
 
-    // Skills Matrix Renderer
-    function renderSkills() {
-      const tabsContainer = document.getElementById('skillsTabs');
-      const gridContainer = document.getElementById('skillsGrid');
-      const isDark = currentTheme === 'dark';
+/* Modal */
+function openProjectModal(id) {
+  const p = PORTFOLIO_DATA.projects.find(x => x.id === id); if (!p) return;
+  const img = document.getElementById('modalImage');
+  img.onerror = () => { img.onerror = null; img.src = FALLBACK_IMG; };
+  img.src = p.image; img.alt = p.title;
+  document.getElementById('modalCategory').textContent = p.category;
+  document.getElementById('modalTitle').textContent = p.title;
+  document.getElementById('modalDescription').textContent = p.longDescription;
+  document.getElementById('modalTags').innerHTML = p.tags.map(t => `<span class="tag !text-xs !px-2.5 !py-1">${t}</span>`).join('');
+  const m = document.getElementById('projectModal'); m.classList.remove('hidden'); m.classList.add('flex');
+  document.body.style.overflow = 'hidden'; icons();
+}
+function closeProjectModal() {
+  const m = document.getElementById('projectModal'); m.classList.add('hidden'); m.classList.remove('flex');
+  document.body.style.overflow = '';
+}
+document.getElementById('projectModal').addEventListener('click', e => { if (e.target.id === 'projectModal') closeProjectModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProjectModal(); });
 
-      tabsContainer.innerHTML = Object.keys(PORTFOLIO_DATA.skillsByCategory).map(cat => {
-        const active = cat === currentSkillCategory;
-        return `
-          <button onclick="selectSkillCategory('${cat}')" class="px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
-            active
-              ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20 scale-105'
-              : isDark
-                ? 'bg-slate-900 text-slate-400 border border-slate-800 hover:bg-slate-800 hover:text-white'
-                : 'bg-white text-stone-600 border border-stone-200 hover:bg-stone-100 hover:text-stone-950'
-          }">
-            ${cat}
-          </button>
-        `;
-      }).join('');
+/* Timeline */
+function renderTimeline() {
+  document.getElementById('timelineContainer').insertAdjacentHTML('beforeend', PORTFOLIO_DATA.timeline.map(item => `
+    <div class="relative pl-10 md:pl-0 md:grid md:grid-cols-[8rem_1fr] md:gap-x-10 group">
+      <span class="absolute left-0 top-0 md:left-[calc(8rem+4px)] w-8 h-8 rounded-full border-2 border-brand-500 bg-white dark:bg-ink-900 text-brand-700 dark:text-brand-400 grid place-items-center shadow-md transition-transform group-hover:scale-110 z-10"><i data-lucide="${item.type === 'work' ? 'briefcase' : 'graduation-cap'}" class="w-3.5 h-3.5"></i></span>
+      <div class="md:text-right text-xs font-mono font-bold accent mb-2 md:mb-0 md:pt-2">${item.period}</div>
+      <div class="surface lift p-5 sm:p-6">
+        <div class="flex flex-wrap items-start justify-between gap-2"><h3 class="text-base font-bold">${item.role}</h3><span class="text-[11px] px-2.5 py-1 rounded-full font-semibold bg-brand-100 text-brand-900 dark:bg-brand-400/10 dark:text-brand-400">${item.organization}</span></div>
+        <div class="text-xs muted mt-1.5 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 accent"></i>${item.location}</div>
+        <p class="text-sm mt-3 leading-relaxed muted">${item.description}</p>
+        <div class="mt-4 space-y-2">${item.highlights.map(h => `<div class="flex items-start gap-2 text-xs"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 accent shrink-0 mt-0.5"></i><span class="muted">${h}</span></div>`).join('')}</div>
+      </div>
+    </div>`).join(''));
+  icons();
+}
 
-      const skills = PORTFOLIO_DATA.skillsByCategory[currentSkillCategory];
-      gridContainer.innerHTML = skills.map(skill => `
-        <div class="p-5 rounded-2xl border transition-all hover:border-amber-500/40 ${
-          isDark ? 'bg-slate-900/70 border-slate-800' : 'bg-white border-stone-200 shadow-sm'
-        }">
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-bold text-sm text-slate-100 dark:text-slate-100">${skill.name}</span>
-            <span class="text-xs font-mono font-bold text-amber-400">${skill.level}%</span>
-          </div>
-          <div class="w-full h-2 rounded-full overflow-hidden mb-2 ${isDark ? 'bg-slate-800' : 'bg-stone-200'}">
-            <div class="h-full bg-gradient-to-r from-amber-500 to-yellow-400 rounded-full transition-all duration-1000" style="width: ${skill.level}%"></div>
-          </div>
-          <div class="text-[11px] font-medium text-slate-400">
-            Focus: <span class="${isDark ? 'text-slate-300' : 'text-stone-700'}">${skill.note}</span>
-          </div>
-        </div>
-      `).join('');
-    }
+/* Scroll: progress bar, back-to-top, active nav */
+window.addEventListener('scroll', () => {
+  const max = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  document.getElementById('scrollProgress').style.width = (max > 0 ? (scrollY / max) * 100 : 0) + '%';
+  const b = document.getElementById('scrollTopBtn'), show = scrollY > 500;
+  b.classList.toggle('opacity-0', !show); b.classList.toggle('pointer-events-none', !show);
+}, { passive: true });
+const navLinks = [...document.querySelectorAll('nav .nav-link')];
+const spy = new IntersectionObserver(entries => entries.forEach(en => {
+  if (en.isIntersecting) navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + en.target.id));
+}), { rootMargin: '-40% 0px -55% 0px' });
+document.querySelectorAll('main section[id]').forEach(s => spy.observe(s));
 
-    function selectSkillCategory(cat) {
-      currentSkillCategory = cat;
-      renderSkills();
-    }
+/* Mobile menu */
+const mBtn = document.getElementById('mobileMenuBtn'), mMenu = document.getElementById('mobileMenu');
+mBtn.addEventListener('click', () => { const open = mMenu.classList.toggle('hidden') === false; mBtn.setAttribute('aria-expanded', open); });
+document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', () => { mMenu.classList.add('hidden'); mBtn.setAttribute('aria-expanded', 'false'); }));
 
-    // Projects Gallery Renderer
-    const projectCategories = ["All", "Web Development", "Footwear Craft", "Freelance Solutions"];
+/* Contact form (Formspree) */
+const form = document.getElementById('contactForm');
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const name = formName.value.trim(), email = formEmail.value.trim(), msg = formMessage.value.trim();
+  const checks = [['errName', !!name], ['errEmail', /\S+@\S+\.\S+/.test(email)], ['errMessage', msg.length >= 12]];
+  checks.forEach(([id, ok]) => document.getElementById(id).classList.toggle('hidden', ok));
+  if (checks.some(c => !c[1])) return;
+  const btn = document.getElementById('submitBtn'), txt = document.getElementById('submitBtnText');
+  btn.disabled = true; txt.textContent = 'Sending...';
+  try {
+    const r = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+    if (r.ok) {
+      const ok = document.getElementById('formSuccessAlert'); ok.classList.remove('hidden'); form.reset();
+      showToast('Message sent! Nedum will reply shortly.'); setTimeout(() => ok.classList.add('hidden'), 6000);
+    } else showToast('Delivery error. Please try WhatsApp directly.');
+  } catch (err) { showToast('Network error. Please try WhatsApp directly.'); }
+  finally { btn.disabled = false; txt.textContent = 'Submit'; }
+});
 
-    function renderProjects() {
-      const filtersContainer = document.getElementById('projectFilters');
-      const gridContainer = document.getElementById('projectsGrid');
-      const isDark = currentTheme === 'dark';
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+  typeLoop(); renderCraft(); renderSkills(); renderProjects(); renderTimeline(); icons();
+});
+</script>
 
-      filtersContainer.innerHTML = projectCategories.map(cat => {
-        const active = cat === currentProjectCategory;
-        return `
-          <button onclick="selectProjectCategory('${cat}')" class="px-4 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all ${
-            active
-              ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-              : isDark
-                ? 'text-slate-400 hover:text-white bg-slate-900/80 border border-slate-800'
-                : 'text-stone-600 hover:text-stone-950 bg-white border border-stone-200'
-          }">
-            ${cat}
-          </button>
-        `;
-      }).join('');
-
-      const list = currentProjectCategory === 'All'
-        ? PORTFOLIO_DATA.projects
-        : PORTFOLIO_DATA.projects.filter(p => p.category === currentProjectCategory);
-
-      gridContainer.innerHTML = list.map(project => `
-        <div class="group rounded-2xl overflow-hidden border transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl flex flex-col ${
-          isDark
-            ? 'bg-slate-900/80 border-slate-800 hover:border-amber-500/40'
-            : 'bg-white border-stone-200 hover:border-amber-400 hover:shadow-xl'
-        }">
-          <div class="relative h-48 overflow-hidden bg-slate-950">
-            <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-            <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
-              <button onclick="openProjectModal('${project.id}')" class="p-2.5 rounded-full bg-amber-400 text-slate-950 hover:scale-110 transition-transform shadow-lg font-bold" title="Inspect Specifications">
-                <i data-lucide="eye" class="w-4 h-4"></i>
-              </button>
-            </div>
-          </div>
-          <div class="p-6 flex-1 flex flex-col justify-between">
-            <div>
-              <div class="text-[10px] font-bold text-amber-400 uppercase tracking-widest mb-1.5">${project.category}</div>
-              <h3 class="text-base font-bold group-hover:text-amber-400 transition-colors">${project.title}</h3>
-              <p class="text-xs mt-2 leading-relaxed ${isDark ? 'text-slate-400' : 'text-stone-600'}">${project.description}</p>
-            </div>
-            <div class="mt-6 pt-4 border-t ${isDark ? 'border-slate-800/60' : 'border-stone-200'} flex flex-col gap-3">
-              <div class="text-[10px] font-mono px-2.5 py-1 rounded-md border ${
-                isDark ? 'bg-amber-500/10 border-amber-500/20 text-amber-300' : 'bg-amber-50 border-amber-200 text-amber-900'
-              }">${project.metrics}</div>
-              <div class="flex flex-wrap gap-1.5">
-                ${project.tags.map(t => `
-                  <span class="text-[10px] font-mono px-2 py-0.5 rounded ${                     isDark ? 'bg-slate-800 text-slate-300' : 'bg-stone-100 text-stone-700'                   }">${t}</span>
-                `).join('')}
-              </div>
-              <div class="flex items-center justify-between text-xs font-bold pt-2">
-                <button onclick="openProjectModal('${project.id}')" class="text-amber-400 hover:text-amber-300 flex items-center gap-1">
-                  <span>Inspect Specs</span>
-                  <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-                </button>
-                ${project.link ? `<a href="${project.link}" target="_blank" class="hover:underline text-amber-400">Visit</a>` : ''}
-              </div>
-            </div>
-          </div>
-        </div>
-      `).join('');
-      lucide.createIcons();
-    }
-
-    function selectProjectCategory(cat) {
-      currentProjectCategory = cat;
-      renderProjects();
-    }
-
-    // Modal Inspection Logic
-    function openProjectModal(projectId) {
-      const p = PORTFOLIO_DATA.projects.find(item => item.id === projectId);
-      if (!p) return;
-
-      document.getElementById('modalImage').src = p.image;
-      document.getElementById('modalCategory').textContent = p.category;
-      document.getElementById('modalTitle').textContent = p.title;
-      document.getElementById('modalDescription').textContent = p.longDescription;
-
-      const tagsContainer = document.getElementById('modalTags');
-      tagsContainer.innerHTML = p.tags.map(t => `
-        <span class="text-xs px-2.5 py-1 rounded-md font-mono bg-slate-800 text-amber-300">${t}</span>
-      `).join('');
-
-      const modal = document.getElementById('projectModal');
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-      lucide.createIcons();
-    }
-
-    function closeProjectModal() {
-      const modal = document.getElementById('projectModal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-    }
-
-    // Timeline Renderer
-    function renderTimeline() {
-      const container = document.getElementById('timelineContainer');
-      const isDark = currentTheme === 'dark';
-
-      container.innerHTML = PORTFOLIO_DATA.timeline.map(item => `
-        <div class="relative pl-6 md:pl-10 group">
-          <div class="absolute -left-[17px] top-1 w-8 h-8 rounded-full border-2 flex items-center justify-center transition-transform group-hover:scale-110 shadow-lg ${
-            isDark
-              ? 'bg-slate-900 border-amber-500 text-amber-400'
-              : 'bg-white border-amber-600 text-amber-700'
-          }">
-            <i data-lucide="${item.type === 'work' ? 'briefcase' : 'graduation-cap'}" class="w-3.5 h-3.5"></i>
-          </div>
-          <div class="md:absolute md:-left-40 md:top-2 text-xs font-mono font-bold text-amber-400 mb-1 md:mb-0">
-            ${item.period}
-          </div>
-          <div class="p-6 rounded-2xl border transition-all ${
-            isDark
-              ? 'bg-slate-900/70 border-slate-800 hover:border-amber-500/30'
-              : 'bg-white border-stone-200 hover:border-amber-300 shadow-sm'
-          }">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <h3 class="text-base font-bold">${item.role}</h3>
-              <span class="text-xs px-2.5 py-1 rounded-full font-semibold ${
-                isDark ? 'bg-amber-500/10 text-amber-400' : 'bg-amber-100 text-amber-900'
-              }">${item.organization}</span>
-            </div>
-            <div class="text-xs text-slate-400 mt-1 flex items-center gap-1">
-              <i data-lucide="map-pin" class="w-3 h-3 text-amber-400"></i>
-              <span>${item.location}</span>
-            </div>
-            <p class="text-xs sm:text-sm mt-3 leading-relaxed ${isDark ? 'text-slate-300' : 'text-stone-600'}">${item.description}</p>
-            <div class="mt-4 space-y-1.5">
-              ${item.highlights.map(h => `
-                <div class="flex items-start gap-2 text-xs">
-                  <i data-lucide="check-circle" class="w-3.5 h-3.5 text-amber-400 flex-shrink-0 mt-0.5"></i>
-                  <span class="${isDark ? 'text-slate-400' : 'text-stone-600'}">${h}</span>
-                </div>
-              `).join('')}
-            </div>
-          </div>
-        </div>
-      `).join('');
-      lucide.createIcons();
-    }
-
-    // Scroll progress & back to top
-    window.addEventListener('scroll', () => {
-      const totalScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const currentScroll = window.scrollY;
-      const progress = totalScroll > 0 ? (currentScroll / totalScroll) * 100 : 0;
-      document.getElementById('scrollProgress').style.width = progress + '%';
-
-      const scrollBtn = document.getElementById('scrollTopBtn');
-      if (currentScroll > 400) {
-        scrollBtn.classList.remove('opacity-0', 'pointer-events-none');
-        scrollBtn.classList.add('opacity-100', 'pointer-events-auto');
-      } else {
-        scrollBtn.classList.add('opacity-0', 'pointer-events-none');
-        scrollBtn.classList.remove('opacity-100', 'pointer-events-auto');
-      }
-    }, { passive: true });
-
-    // Mobile Menu Toggle
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    document.querySelectorAll('.mobile-nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
-    });
-
-    // Form Submission & Formspree AJAX Handler
-    const contactForm = document.getElementById('contactForm');
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
- 
-      const name = document.getElementById('formName').value.trim();
-      const email = document.getElementById('formEmail').value.trim();
-      const message = document.getElementById('formMessage').value.trim();
-
-      let valid = true;
-
-      if (!name) {
-        document.getElementById('errName').classList.remove('hidden');
-        valid = false;
-      } else {
-        document.getElementById('errName').classList.add('hidden');
-      }
-
-      if (!email || !/\S+@\S+\.\S+/.test(email)) {
-        document.getElementById('errEmail').classList.remove('hidden');
-        valid = false;
-      } else {
-        document.getElementById('errEmail').classList.add('hidden');
-      }
-
-      if (!message || message.length < 12) {
-        document.getElementById('errMessage').classList.remove('hidden');
-        valid = false;
-      } else {
-        document.getElementById('errMessage').classList.add('hidden');
-      }
-
-      if (!valid) return;
-
-      const submitBtn = document.getElementById('submitBtn');
-      const submitText = document.getElementById('submitBtnText');
-      submitBtn.disabled = true;
-      submitText.textContent = "Transmitting Payload...";
-
-      try {
-        const formData = new FormData(contactForm);
-        const response = await fetch(contactForm.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-          document.getElementById('formSuccessAlert').classList.remove('hidden');
-          contactForm.reset();
-          showToast("Message securely transmitted! Nedum will reply shortly.");
-          setTimeout(() => {
-            document.getElementById('formSuccessAlert').classList.add('hidden');
-          }, 6000);
-        } else {
-          showToast("Form delivery error. Please try WhatsApp directly.");
-        }
-      } catch (err) {
-        showToast("Network error. Please try WhatsApp directly.");
-      } finally {
-        submitBtn.disabled = false;
-        submitText.textContent = "Submit";
-      }
-    });
-
-    // Initialization on DOM Load
-    window.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('currentYear').textContent = new Date().getFullYear();
-      initStarfield();
-      typeLoop();
-      applyTheme('dark');
-      renderCraft();
-      renderSkills();
-      renderProjects();
-      renderTimeline();
-    });
-  </script>
-
-  <!-- Chatbase Chatbot Embed Widget -->
-  <script
-    src="https://www.chatbase.co/embed.min.js"
-    chatbotId="yL8bhE7HcoOwJBJ7kGdhu"
-    domain="www.chatbase.co"
-    defer>
-  </script>
+<!-- Chatbase chatbot -->
+<script src="https://www.chatbase.co/embed.min.js" chatbotId="yL8bhE7HcoOwJBJ7kGdhu" domain="www.chatbase.co" defer></script>
 </body>
 </html>
